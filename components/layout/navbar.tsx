@@ -4,11 +4,12 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { motion } from "framer-motion";
 
 const navLinks = [
-  { label: "Experience", href: "#experience" },
-  { label: "Education", href: "#education" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Education", href: "/#education" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Case Studies", href: "/work" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function Navbar() {
@@ -21,7 +22,7 @@ export function Navbar() {
     >
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
         <a
-          href="#"
+          href="/"
           className="font-heading text-sm font-semibold tracking-tight"
         >
           DK
