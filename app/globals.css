@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F5F2EA;
+  --surface: #ECE8DE;
+  --text-primary: #111111;
+  --text-secondary: #5F5A52;
+  --line: #D8D1C5;
+  --accent: #7B6F63;
+  --accent-alt: #6C7A89;
+}
+
+.dark {
+  --background: #0B0B0C;
+  --surface: #121214;
+  --text-primary: #F3F3F0;
+  --text-secondary: #A1A1AA;
+  --line: #232326;
+  --accent: #B7A48B;
+  --accent-alt: #8FA3A8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--text-primary);
+  --color-muted: var(--text-secondary);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-alt: var(--accent-alt);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-geist-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--background);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
