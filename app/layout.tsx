@@ -5,7 +5,7 @@ import { SmoothScroll } from "@/components/layout/smooth-scroll";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { GridBackground } from "@/components/ui/grid-background";
-import { CursorGlow } from "@/components/ui/cursor-glow";
+
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { CommandPalette } from "@/components/ui/command-palette";
 import "./globals.css";
@@ -41,7 +41,6 @@ export default function RootLayout({
         <ThemeProvider>
           <SmoothScroll>
             <GridBackground />
-            <CursorGlow />
             <ScrollProgress />
             <Navbar />
             <main className="relative z-10">{children}</main>

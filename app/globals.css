@@ -12,14 +12,14 @@
 }
 
 .dark {
-  --background: #050505;
-  --surface: #0e0e0e;
-  --surface-elevated: #161616;
-  --text-primary: #e8e8e8;
-  --text-secondary: #6b6b6b;
-  --line: #1a1a1a;
-  --accent: #00ff88;
-  --accent-dim: rgba(0, 255, 136, 0.08);
+  --background: #1e1f23;
+  --surface: #282a2e;
+  --surface-elevated: #32343a;
+  --text-primary: #f0f0f0;
+  --text-secondary: #a8a8b0;
+  --line: #3e4046;
+  --accent: #00e87a;
+  --accent-dim: rgba(0, 232, 122, 0.14);
 }
 
 @theme inline {
