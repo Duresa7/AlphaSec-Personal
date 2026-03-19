@@ -1,20 +1,25 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { Inter } from "next/font/google";
+import { Syne, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { SmoothScroll } from "@/components/layout/smooth-scroll";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { GridBackground } from "@/components/ui/grid-background";
+import { CursorGlow } from "@/components/ui/cursor-glow";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { CommandPalette } from "@/components/ui/command-palette";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -31,13 +36,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${inter.variable} bg-background text-foreground antialiased`}
+        className={`${syne.variable} ${jetbrainsMono.variable} bg-background text-foreground antialiased`}
       >
         <ThemeProvider>
           <SmoothScroll>
+            <GridBackground />
+            <CursorGlow />
+            <ScrollProgress />
             <Navbar />
-            <main>{children}</main>
+            <main className="relative z-10">{children}</main>
             <Footer />
+            <CommandPalette />
           </SmoothScroll>
         </ThemeProvider>
       </body>

@@ -1,8 +1,7 @@
 "use client";
 
 import { experience } from "@/content/experience";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { AnimateIn } from "@/components/motion/animate-in";
+import { SectionDivider } from "@/components/ui/section-divider";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { motion } from "framer-motion";
 
@@ -10,47 +9,62 @@ export function Experience() {
   return (
     <section id="experience" className="py-24 md:py-32">
       <div className="mx-auto max-w-5xl px-6">
-        <SectionHeading>Experience</SectionHeading>
+        <SectionDivider label="experience" />
 
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="mt-14 space-y-16"
+          className="mt-14 relative"
         >
-          {experience.map((job) => (
-            <motion.div
-              key={job.company}
-              variants={fadeInUp}
-              className="grid gap-4 md:grid-cols-[200px_1fr]"
-            >
-              <div>
-                <p className="text-xs uppercase tracking-widest text-accent">
-                  {job.period}
-                </p>
-                <p className="mt-1 text-xs text-muted">{job.location}</p>
-              </div>
+          {/* Vertical accent line */}
+          <div className="absolute left-0 top-0 bottom-0 w-px bg-accent/20 hidden md:block" />
 
-              <div className="border-l border-line pl-6">
-                <h3 className="font-heading text-lg font-semibold">
-                  {job.role}
-                </h3>
-                <p className="mt-0.5 text-sm text-muted">{job.company}</p>
+          <div className="space-y-16">
+            {experience.map((job, index) => (
+              <motion.div
+                key={job.company}
+                variants={fadeInUp}
+                className="grid gap-4 md:grid-cols-[200px_1fr] md:pl-8 relative"
+              >
+                {/* Timeline dot */}
+                <div className="absolute left-[-3px] top-1 h-[7px] w-[7px] bg-accent hidden md:block" />
 
-                <ul className="mt-4 space-y-3">
-                  {job.bullets.map((bullet, i) => (
-                    <li
-                      key={i}
-                      className="relative pl-4 text-sm leading-relaxed text-muted before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-line"
-                    >
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
+                <div>
+                  <p className="font-mono text-xs text-accent">
+                    {job.period}
+                  </p>
+                  <p className="mt-1 font-mono text-[11px] text-muted/60">
+                    {job.location}
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="font-heading text-lg font-semibold">
+                    {job.role}
+                  </h3>
+                  <p className="mt-0.5 font-mono text-sm text-muted">
+                    {job.company}
+                  </p>
+
+                  <ul className="mt-4 space-y-3">
+                    {job.bullets.map((bullet, i) => (
+                      <li
+                        key={i}
+                        className="relative pl-5 text-sm leading-relaxed text-muted"
+                      >
+                        <span className="absolute left-0 top-0 font-mono text-accent/40">
+                          &gt;
+                        </span>
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
