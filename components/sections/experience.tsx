@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24 md:py-32">
+    <section id="experience" className="py-10 md:py-14">
       <div className="mx-auto max-w-5xl px-6">
         <SectionDivider label="experience" />
 

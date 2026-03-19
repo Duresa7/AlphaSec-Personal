@@ -8,7 +8,7 @@ import { ExternalLink } from "lucide-react";
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 md:py-32">
+    <section id="projects" className="py-10 md:py-14">
       <div className="mx-auto max-w-5xl px-6">
         <SectionDivider label="projects" />
 

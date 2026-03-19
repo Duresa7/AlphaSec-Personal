@@ -47,7 +47,7 @@ const reviews = [
 
 export function TestimonialsSection() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-10 md:py-14">
       <div className="mx-auto max-w-7xl px-6">
         <SectionDivider label="testimonials" />
         <TestimonialSlider reviews={reviews} className="mt-14" />

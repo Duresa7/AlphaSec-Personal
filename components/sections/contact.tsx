@@ -6,7 +6,7 @@ import { MagneticButton } from "@/components/ui/magnetic-button";
 
 export function Contact() {
   return (
-    <section id="contact" className="py-24 md:py-32">
+    <section id="contact" className="py-10 md:py-14">
       <div className="mx-auto max-w-5xl px-6 text-center">
         <AnimateIn>
           <p className="font-mono text-sm text-accent">
@@ -19,8 +19,7 @@ export function Contact() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted">
-            I&apos;m currently looking for SOC Analyst, IT Support, or Security
-            Engineer opportunities. Feel free to reach out.
+            Currently seeking any IT opportunities. Feel free to reach out.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">

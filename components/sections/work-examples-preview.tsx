@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export function WorkExamplesPreview() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-10 md:py-14">
       <div className="mx-auto max-w-5xl px-6">
         <SectionDivider label="work examples" />
 
