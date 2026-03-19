@@ -115,7 +115,7 @@ export const TestimonialSlider = ({
           </div>
         </div>
 
-        <div className="md:col-span-5 relative h-80 min-h-[400px] md:min-h-[500px] order-1 md:order-2">
+        <div className="md:col-span-4 relative h-80 min-h-[400px] md:min-h-[500px] order-1 md:order-2">
           <AnimatePresence initial={false} custom={direction}>
             <motion.img
               key={currentIndex}
@@ -132,7 +132,7 @@ export const TestimonialSlider = ({
           </AnimatePresence>
         </div>
 
-        <div className="md:col-span-5 flex flex-col justify-between md:pl-8 order-3 md:order-3">
+        <div className="md:col-span-6 flex flex-col justify-between order-3 md:order-3">
           <div className="relative overflow-hidden pt-4 md:pt-12 min-h-[200px]">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div

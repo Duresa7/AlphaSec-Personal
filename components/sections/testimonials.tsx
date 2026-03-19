@@ -17,11 +17,10 @@ const reviews = [
     id: 2,
     name: "Katie Harry",
     affiliation: "Director at Converse University",
-    quote: "Placeholder testimonial text.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=600&fit=crop&q=80",
-    thumbnailSrc:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=120&fit=crop&q=80",
+    quote:
+      "In all my years leading this program, it is rare to come across someone with the level of maturity and intentionality that Duresa brought to his work. When he came on board, our teams were in a difficult place, and his presence was instrumental in turning things around. The athletes he coached looked up to him not because they were asked to, but because he earned it through his dedication and genuine ability to connect and inspire. His professionalism and character were a reflection of someone who truly understands what it means to be a leader, and he left a lasting impression on this program and everyone in it.",
+    imageSrc: "/katie.jpg",
+    thumbnailSrc: "/katie.jpg",
   },
   {
     id: 3,
