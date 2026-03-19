@@ -71,6 +71,39 @@ export function Projects() {
                   </li>
                 ))}
               </ul>
+
+              {project.diagramUrl && (
+                <div className="mt-6">
+                  <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-muted/50">
+                    // network diagram
+                  </p>
+                  <div className="overflow-hidden border border-line">
+                    <iframe
+                      src={project.diagramUrl}
+                      style={{ width: "100%", height: "600px", border: "none" }}
+                      title={`${project.name} diagram`}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {project.videoUrl && (
+                <div className="mt-6">
+                  <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-muted/50">
+                    // demo
+                  </p>
+                  <div className="overflow-hidden border border-line">
+                    <video
+                      src={project.videoUrl}
+                      controls
+                      muted
+                      playsInline
+                      className="w-full"
+                      title={`${project.name} demo`}
+                    />
+                  </div>
+                </div>
+              )}
             </motion.div>
           ))}
         </motion.div>

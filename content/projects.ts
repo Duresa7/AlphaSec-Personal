@@ -4,6 +4,8 @@ export interface Project {
   period: string;
   bullets: string[];
   link?: string;
+  diagramUrl?: string;
+  videoUrl?: string;
 }
 
 export const projects: Project[] = [
@@ -27,6 +29,8 @@ export const projects: Project[] = [
       "Hardened a production web environment using Cloudflare Tunnel (zero open WAN ports), WAF rules, rate limiting, and Caddy reverse proxy monitored end-to-end by Wazuh.",
       "Built an n8n automation pipeline that ingests Wazuh alerts, enriches them with VirusTotal and IP reputation lookups, passes correlated findings to Claude API to classify severity, and automatically isolates compromised hosts.",
     ],
+    diagramUrl:
+      "https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=B3B3B3&edit=_blank&layers=1&nav=1&title=Homala.drawio&dark=auto#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1O2_BcWAGTMvv9xJv3GbOb5rwFLYhuv7Z%26export%3Ddownload",
   },
   {
     name: "AlphaSec United",
@@ -60,5 +64,6 @@ export const projects: Project[] = [
       "Managed agile workflow end-to-end in Jira, organizing backlog and sprint tasks to ensure on-time delivery of a functional end-to-end product.",
     ],
     link: "https://github.com/Duresa7",
+    videoUrl: "/Valobrain-vid.mp4",
   },
 ];

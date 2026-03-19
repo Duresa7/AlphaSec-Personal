@@ -17,7 +17,7 @@ export const education: Education[] = [
     school: "Montgomery College",
     degree: "A.A.S. in Cybersecurity",
     expected: "June 2025",
-    gpa: "3.3 / 4.0",
+    gpa: "3.4 / 4.0",
     honors: ["3× Dean's List"],
     coursework: [
       "Network Security",
