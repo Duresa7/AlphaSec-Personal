@@ -22,16 +22,7 @@ const reviews = [
     imageSrc: "/katie.jpg",
     thumbnailSrc: "/katie.jpg",
   },
-  {
-    id: 3,
-    name: "Nomad",
-    affiliation: "NBG President",
-    quote: "Placeholder testimonial text.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=600&fit=crop&q=80",
-    thumbnailSrc:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=120&fit=crop&q=80",
-  },
+
   {
     id: 4,
     name: "Ahmed Haji",
