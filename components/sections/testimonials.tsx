@@ -36,11 +36,10 @@ const reviews = [
     id: 4,
     name: "Ahmed Haji",
     affiliation: "Waabee Self Help Founder",
-    quote: "Placeholder testimonial text.",
-    imageSrc:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=600&fit=crop&q=80",
-    thumbnailSrc:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=120&fit=crop&q=80",
+    quote:
+      "Duresa was the backbone of our technology operations at Waabee Self-Help. As a nonprofit, we relied heavily on him to wear many hats, and he never once fell short. From managing our website and AV setup to establishing our entire business workspace including tools like Slack, he built the infrastructure that allowed our team to function and grow. What stood out most was that he did all of this on his own, with minimal direction and maximum initiative. He brought a level of professionalism and reliability to our organization that we genuinely could not have operated without. Any team would be lucky to have him.",
+    imageSrc: "/ahmed.jpg",
+    thumbnailSrc: "/ahmed.jpg",
   },
 ];
 
