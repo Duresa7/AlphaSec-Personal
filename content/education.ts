@@ -36,4 +36,8 @@ export const education: Education[] = [
 export const certifications: string[] = [
   "AWS Certified Cloud Practitioner",
   "CompTIA Security+",
+  "Anthropic AI Fluency: Framework & Foundations",
+  "Anthropic: Claude 101",
+  "Anthropic: Building with Claude API",
+  "Anthropic MCP: Advanced Topics",
 ];
