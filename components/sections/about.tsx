@@ -21,7 +21,7 @@ const paragraphs = [
 export function About() {
   return (
     <section id="about" className="py-10 md:py-14">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionDivider label="about me" />
 
         <motion.div
@@ -29,7 +29,7 @@ export function About() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="mt-14 space-y-6"
+          className="mt-14 space-y-6 max-w-3xl"
         >
           {paragraphs.map((text, i) => (
             <motion.p

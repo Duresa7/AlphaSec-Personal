@@ -15,7 +15,7 @@ export function Hero() {
       id="hero"
       className="relative flex min-h-[90vh] items-end pb-24 pt-32 md:items-center md:pb-0"
     >
-      <div className="mx-auto w-full max-w-5xl px-6">
+      <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
         {/* Terminal prompt */}
         <div className="font-mono text-sm text-accent">
           <span className="text-muted">&gt; </span>

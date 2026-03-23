@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 export function Experience() {
   return (
     <section id="experience" className="py-10 md:py-14">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionDivider label="experience" />
 
         <motion.div
@@ -48,7 +48,7 @@ export function Experience() {
                     {job.company}
                   </p>
 
-                  <ul className="mt-4 space-y-3">
+                  <ul className="mt-4 space-y-3 max-w-2xl">
                     {job.bullets.map((bullet, i) => (
                       <li
                         key={i}

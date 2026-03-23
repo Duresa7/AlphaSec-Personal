@@ -10,7 +10,7 @@ import { Shield } from "lucide-react";
 export function Education() {
   return (
     <section id="education" className="py-10 md:py-14">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionDivider label="education" />
 
         <motion.div

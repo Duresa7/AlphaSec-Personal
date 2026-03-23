@@ -7,7 +7,7 @@ import { MagneticButton } from "@/components/ui/magnetic-button";
 export function Contact() {
   return (
     <section id="contact" className="py-10 md:py-14">
-      <div className="mx-auto max-w-5xl px-6 text-center">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <AnimateIn>
           <p className="font-mono text-sm text-accent">
             <span className="text-muted">&gt; </span>
