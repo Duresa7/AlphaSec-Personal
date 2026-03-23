@@ -28,7 +28,7 @@ export function Navbar() {
         transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
         className="fixed top-[2px] left-0 right-0 z-40 border-b border-line bg-background/80 backdrop-blur-md"
       >
-        <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
+        <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6 lg:px-8">
           <a href="/" className="flex items-center gap-0.5">
             <span className="font-mono text-sm font-semibold text-foreground">
               DK

@@ -12,7 +12,7 @@ function slugify(label: string) {
 export function Skills() {
   return (
     <section id="skills" className="py-10 md:py-14">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionDivider label="skills" />
 
         <motion.div

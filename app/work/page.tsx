@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 export default function WorkExamplesPage() {
   return (
     <div className="min-h-screen bg-background">
-      <main className="mx-auto max-w-4xl px-6 py-32">
+      <main className="mx-auto max-w-5xl px-6 lg:px-8 py-32">
         {/* Back link */}
         <Link
           href="/"

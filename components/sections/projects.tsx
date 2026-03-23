@@ -9,7 +9,7 @@ import { ExternalLink } from "lucide-react";
 export function Projects() {
   return (
     <section id="projects" className="py-10 md:py-14">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionDivider label="projects" />
 
         <motion.div
@@ -58,7 +58,7 @@ export function Projects() {
                 ))}
               </div>
 
-              <ul className="mt-5 space-y-3">
+              <ul className="mt-5 space-y-3 max-w-2xl">
                 {project.bullets.map((bullet, i) => (
                   <li
                     key={i}
