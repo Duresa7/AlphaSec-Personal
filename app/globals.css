@@ -283,6 +283,65 @@ body {
   background: var(--vertical-route-line);
 }
 
+/* ── Boot Screen CRT Effects ───────────────────────────── */
+
+@keyframes boot-flicker {
+  0%, 100% { opacity: 1; }
+  42% { opacity: 0.97; }
+  44% { opacity: 1; }
+  78% { opacity: 0.98; }
+  80% { opacity: 1; }
+}
+
+.boot-crt {
+  transform: perspective(900px) rotateX(0.8deg);
+  box-shadow:
+    0 0 80px rgba(0, 232, 122, 0.04),
+    inset 0 0 120px rgba(0, 0, 0, 0.6);
+}
+
+.boot-scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+}
+
+.boot-scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(0, 232, 122, 0.03),
+    transparent
+  );
+  transform: translateY(-100%);
+  animation: scanline 4s linear infinite;
+}
+
+.boot-reflection {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 40%,
+    transparent 60%,
+    rgba(255, 255, 255, 0.015) 100%
+  );
+}
+
+.boot-glow {
+  text-shadow: 0 0 8px rgba(0, 232, 122, 0.4), 0 0 2px rgba(0, 232, 122, 0.2);
+}
+
+.boot-flicker {
+  animation: boot-flicker 4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -296,7 +355,9 @@ body {
   .route-track::after,
   .route-node::after,
   .hero-radar::before,
-  .hero-radar::after {
+  .hero-radar::after,
+  .boot-flicker,
+  .boot-scanlines::after {
     animation: none !important;
   }
 }
