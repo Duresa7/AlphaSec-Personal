@@ -59,14 +59,14 @@ export function Education() {
                   <p className="font-mono text-[10px] uppercase tracking-widest text-muted/50">
                     coursework
                   </p>
-                  <div className="mt-2 flex flex-wrap gap-1.5">
+                  <div className="mt-2 flex flex-wrap gap-2">
                     {edu.coursework.map((course) => (
-                      <code
+                      <span
                         key={course}
-                        className="bg-surface px-2 py-0.5 font-mono text-[11px] text-muted"
+                        className="border border-line bg-background/55 px-3 py-1.5 font-mono text-xs text-muted transition-all hover:border-accent/50 hover:text-foreground"
                       >
                         {course}
-                      </code>
+                      </span>
                     ))}
                   </div>
                 </div>

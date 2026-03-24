@@ -72,7 +72,7 @@ export function CommandPalette() {
             exit={{ opacity: 0, scale: 0.96, y: -8 }}
             transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-lg border border-line bg-surface shadow-2xl"
+            className="w-full max-w-lg border border-line bg-surface"
           >
             <Command
               className="font-mono text-sm"

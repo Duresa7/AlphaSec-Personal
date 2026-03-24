@@ -98,7 +98,7 @@ export function Hero() {
           </motion.p>
 
           <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
-            <motion.div variants={fadeInUp}>
+            <motion.div variants={fadeInUp} className="space-y-4">
               <div className="flex flex-wrap items-center gap-4">
                 <MagneticButton
                   href="https://github.com/Duresa7"
@@ -117,9 +117,29 @@ export function Hero() {
                   Email
                 </MagneticButton>
               </div>
+
+              <motion.div
+                variants={fadeIn}
+                className="grid gap-4 md:grid-cols-2"
+              >
+                <SystemStatCard
+                  label="certifications"
+                  value="Security+ / AWS CCP"
+                  meta="Security operations and foundational cloud coverage."
+                  status="verified"
+                />
+                <SystemStatCard
+                  label="education"
+                  value="A.A.S. Cybersecurity"
+                  meta="Montgomery College - 3.4 GPA, 3x Dean's List."
+                />
+              </motion.div>
             </motion.div>
 
-            <motion.div variants={fadeInUp}>
+            <motion.div
+              variants={fadeInUp}
+              className="lg:-mt-[7.5rem] lg:justify-self-end"
+            >
               <TerminalPanel
                 title="command feed"
                 subtitle="rotating operator context"
@@ -148,22 +168,6 @@ export function Hero() {
             </motion.div>
           </div>
 
-          <motion.div
-            variants={fadeIn}
-            className="mt-6 grid gap-4 md:grid-cols-2"
-          >
-            <SystemStatCard
-              label="certifications"
-              value="Security+ / AWS CCP"
-              meta="Security operations and foundational cloud coverage."
-              status="verified"
-            />
-            <SystemStatCard
-              label="education"
-              value="A.A.S. Cybersecurity"
-              meta="Montgomery College - 3.4 GPA, 3x Dean's List."
-            />
-          </motion.div>
         </motion.div>
       </div>
 

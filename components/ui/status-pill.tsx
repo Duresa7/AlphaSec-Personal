@@ -12,7 +12,7 @@ const statusStyles = {
   default:
     "border-line/80 text-muted bg-background/55",
   active:
-    "border-accent/35 text-accent bg-accent-dim/70 shadow-[0_0_18px_var(--glow)]",
+    "border-accent/35 text-accent bg-accent-dim/70",
   warning:
     "border-warning/40 text-warning bg-warning/10",
 };

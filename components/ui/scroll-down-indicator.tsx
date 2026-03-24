@@ -52,7 +52,7 @@ export function ScrollDownIndicator() {
     <button
       onClick={scrollToNext}
       aria-label="Scroll to next section"
-      className="fixed bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 border border-line bg-surface/90 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted backdrop-blur-sm transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_12px_var(--glow)]"
+      className="fixed bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 border border-line bg-surface/90 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted backdrop-blur-sm transition-all hover:border-accent hover:text-accent"
     >
       scroll
       <ChevronDown size={14} className="animate-bounce" />

@@ -76,7 +76,7 @@ export function Skills() {
                     {category.items.map((item) => (
                       <span
                         key={item}
-                        className="border border-line bg-background/55 px-3 py-1.5 font-mono text-xs text-muted transition-all hover:border-accent/50 hover:text-foreground hover:shadow-[0_0_12px_var(--accent-dim)]"
+                        className="border border-line bg-background/55 px-3 py-1.5 font-mono text-xs text-muted transition-all hover:border-accent/50 hover:text-foreground"
                       >
                         {item}
                       </span>
