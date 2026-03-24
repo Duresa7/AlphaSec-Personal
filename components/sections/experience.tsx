@@ -49,7 +49,7 @@ export function Experience() {
             viewport={{ once: true, margin: "-80px" }}
             className="relative mt-8"
           >
-            <div className="absolute bottom-0 left-[13px] top-0 hidden w-px bg-gradient-to-b from-accent/10 via-accent/70 to-transparent lg:block" />
+            <div className="vertical-route-line absolute bottom-0 left-[13px] top-0 hidden w-px lg:block" />
 
             <div className="space-y-16">
               {experience.map((job, index) => (
