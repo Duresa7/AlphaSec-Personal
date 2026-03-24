@@ -118,7 +118,7 @@ export function TracerouteMap() {
             className="relative"
           >
             {/* Vertical connector line */}
-            <div className="absolute bottom-2 left-[18px] top-2 w-px bg-gradient-to-b from-accent/60 via-accent/30 to-transparent" />
+            <div className="vertical-route-line absolute bottom-2 left-[18px] top-2 w-px" />
 
             {hops.map((hop, i) => (
               <motion.div

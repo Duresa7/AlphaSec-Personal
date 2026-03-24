@@ -14,6 +14,7 @@
   --success: #00b35e;
   --panel-tint: rgba(255, 255, 255, 0.58);
   --route-line: rgba(10, 10, 10, 0.14);
+  --vertical-route-line: color-mix(in srgb, var(--accent) 22%, var(--line));
 }
 
 .dark {
@@ -30,6 +31,7 @@
   --success: #00e87a;
   --panel-tint: rgba(42, 44, 50, 0.72);
   --route-line: rgba(240, 240, 240, 0.12);
+  --vertical-route-line: linear-gradient(180deg, color-mix(in srgb, var(--accent) 60%, transparent), color-mix(in srgb, var(--accent) 30%, transparent), transparent);
 }
 
 @theme inline {
@@ -221,6 +223,30 @@ body {
   opacity: 0.6;
   transform: translateY(-100%);
   animation: scan-sweep 9s linear infinite;
+}
+
+:root:not(.dark) .network-panel {
+  background: var(--surface);
+  backdrop-filter: none;
+}
+
+:root:not(.dark) .network-panel::after,
+:root:not(.dark) .route-track::after,
+:root:not(.dark) .hero-radar::before,
+:root:not(.dark) .hero-radar::after {
+  display: none;
+}
+
+:root:not(.dark) .route-track::before {
+  background: var(--route-line);
+}
+
+:root:not(.dark) .route-node::after {
+  animation: none;
+}
+
+.vertical-route-line {
+  background: var(--vertical-route-line);
 }
 
 @media (prefers-reduced-motion: reduce) {
