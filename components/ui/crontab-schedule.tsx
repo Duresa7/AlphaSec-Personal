@@ -4,14 +4,19 @@ import { useEffect, useState } from "react";
 import { TerminalPanel } from "@/components/ui/terminal-panel";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { siteProfile } from "@/content/site";
 
 interface CronEntry {
   schedule: string;
   command: string;
   comment: string;
   humanReadable: string;
-  matchHour?: number[];
-  matchDow?: number[]; // 0=Sun, 1=Mon, ... 6=Sat
+  match: {
+    minutes?: number[];
+    hours?: number[];
+    daysOfMonth?: number[];
+    daysOfWeek?: number[]; // 0=Sun, 1=Mon, ... 6=Sat
+  };
 }
 
 const cronEntries: CronEntry[] = [
@@ -20,66 +25,88 @@ const cronEntries: CronEntry[] = [
     command: "/usr/local/bin/homelab-health-check",
     comment: "morning infrastructure review",
     humanReadable: "Every weekday at 6:00 AM",
-    matchHour: [6],
-    matchDow: [1, 2, 3, 4, 5],
+    match: {
+      minutes: [0],
+      hours: [6],
+      daysOfWeek: [1, 2, 3, 4, 5],
+    },
   },
   {
     schedule: "0 9 * * 1-5",
     command: "/opt/study/umgc-coursework --focus",
     comment: "B.S. Cyber Operations study block",
     humanReadable: "Every weekday at 9:00 AM",
-    matchHour: [9],
-    matchDow: [1, 2, 3, 4, 5],
+    match: {
+      minutes: [0],
+      hours: [9],
+      daysOfWeek: [1, 2, 3, 4, 5],
+    },
   },
   {
     schedule: "0 * * * *",
     command: "/usr/local/bin/wazuh-alert-triage",
     comment: "hourly alert review and triage",
     humanReadable: "Every hour, on the hour",
-    matchHour: Array.from({ length: 24 }, (_, i) => i),
-    matchDow: [0, 1, 2, 3, 4, 5, 6],
+    match: {
+      minutes: [0],
+    },
   },
   {
     schedule: "0 8 * * 1",
     command: "/usr/local/bin/weekly-vuln-scan --full",
     comment: "monday full vulnerability scan",
     humanReadable: "Every Monday at 8:00 AM",
-    matchHour: [8],
-    matchDow: [1],
+    match: {
+      minutes: [0],
+      hours: [8],
+      daysOfWeek: [1],
+    },
   },
   {
     schedule: "30 14 * * 3",
     command: "/opt/lab/threat-hunt --ioc-refresh",
     comment: "midweek threat hunting session",
     humanReadable: "Every Wednesday at 2:30 PM",
-    matchHour: [14],
-    matchDow: [3],
+    match: {
+      minutes: [30],
+      hours: [14],
+      daysOfWeek: [3],
+    },
   },
   {
     schedule: "0 21 * * *",
     command: "/usr/local/bin/threat-intel-update",
     comment: "nightly threat intel enrichment",
     humanReadable: "Every day at 9:00 PM",
-    matchHour: [21],
-    matchDow: [0, 1, 2, 3, 4, 5, 6],
+    match: {
+      minutes: [0],
+      hours: [21],
+    },
   },
   {
     schedule: "0 0 1 * *",
     command: "/opt/reports/monthly-security-review",
     comment: "monthly security posture report",
     humanReadable: "1st of every month at midnight",
-    matchHour: [0],
-    matchDow: [0, 1, 2, 3, 4, 5, 6],
+    match: {
+      minutes: [0],
+      hours: [0],
+      daysOfMonth: [1],
+    },
   },
 ];
 
+function matchesField(values: number[] | undefined, current: number) {
+  return values ? values.includes(current) : true;
+}
+
 function isCurrentlyActive(entry: CronEntry): boolean {
   const now = new Date();
-  const hour = now.getHours();
-  const dow = now.getDay();
   return (
-    (entry.matchHour?.includes(hour) ?? false) &&
-    (entry.matchDow?.includes(dow) ?? false)
+    matchesField(entry.match.minutes, now.getMinutes()) &&
+    matchesField(entry.match.hours, now.getHours()) &&
+    matchesField(entry.match.daysOfMonth, now.getDate()) &&
+    matchesField(entry.match.daysOfWeek, now.getDay())
   );
 }
 
@@ -95,10 +122,20 @@ export function CrontabSchedule() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const [, setTick] = useState(0);
 
-  // Re-render every minute to update active job
   useEffect(() => {
-    const interval = setInterval(() => setTick((t) => t + 1), 60000);
-    return () => clearInterval(interval);
+    let intervalId: number | undefined;
+    const tick = () => setTick((value) => value + 1);
+    const timeoutId = window.setTimeout(() => {
+      tick();
+      intervalId = window.setInterval(tick, 60000);
+    }, 60000 - (Date.now() % 60000));
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      if (intervalId) {
+        window.clearInterval(intervalId);
+      }
+    };
   }, []);
 
   return (
@@ -112,7 +149,7 @@ export function CrontabSchedule() {
       <div className="mb-4 space-y-0.5 font-mono text-[11px] text-muted/40">
         <p>SHELL=/bin/bash</p>
         <p>PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin</p>
-        <p>MAILTO=duresakadi@gmail.com</p>
+        <p>MAILTO={siteProfile.emailAddress}</p>
       </div>
 
       {/* Entries */}

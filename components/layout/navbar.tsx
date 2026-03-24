@@ -6,17 +6,8 @@ import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { MobileMenu } from "@/components/layout/mobile-menu";
+import { navItems } from "@/content/site";
 import { useActiveSection } from "@/hooks/use-active-section";
-
-const navLinks = [
-  { label: "about", id: "about", href: "/#about" },
-  { label: "experience", id: "experience", href: "/#experience" },
-  { label: "education", id: "education", href: "/#education" },
-  { label: "skills", id: "skills", href: "/#skills" },
-  { label: "projects", id: "projects", href: "/#projects" },
-  { label: "work examples", id: "work", href: "/work" },
-  { label: "contact", id: "contact", href: "/#contact" },
-];
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -49,14 +40,14 @@ export function Navbar() {
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
-            {navLinks.map((link) => (
-              <a
+            {navItems.map((link) => (
+              <Link
                 key={link.href}
                 href={link.href}
                 className="ui-mono-meta group relative lowercase text-muted transition-colors hover:text-foreground"
               >
                 {link.label}
-                {activeSection === link.id && (
+                {activeSection === link.sectionId && (
                   <motion.span
                     layoutId="nav-active"
                     className="absolute -bottom-2 left-0 right-0 h-3"
@@ -69,7 +60,7 @@ export function Navbar() {
                     <span className="route-track absolute inset-x-0 top-1/2 h-3 -translate-y-1/2" />
                   </motion.span>
                 )}
-              </a>
+              </Link>
             ))}
           </nav>
 

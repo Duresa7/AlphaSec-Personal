@@ -9,6 +9,13 @@ import { StatusPill } from "@/components/ui/status-pill";
 import { TerminalPanel } from "@/components/ui/terminal-panel";
 import { DnsLookupCard } from "@/components/ui/dns-lookup-card";
 import { CrontabSchedule } from "@/components/ui/crontab-schedule";
+import { primaryContactLinks } from "@/content/site";
+
+const iconMap = {
+  email: Mail,
+  github: Github,
+  linkedin: Linkedin,
+} as const;
 
 export function Contact() {
   const [showExtras, setShowExtras] = useState(false);
@@ -40,37 +47,31 @@ export function Contact() {
               </p>
 
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <StatusPill status="active">email</StatusPill>
-                <StatusPill>github</StatusPill>
-                <StatusPill>linkedin</StatusPill>
+                {primaryContactLinks.map((link, index) => (
+                  <StatusPill key={link.key} status={index === 0 ? "active" : undefined}>
+                    {link.key}
+                  </StatusPill>
+                ))}
               </div>
 
               <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-                <MagneticButton
-                  href="mailto:duresakadi@gmail.com"
-                  className="ui-mono-label inline-flex items-center gap-2 border border-line px-6 py-3 text-muted transition-colors hover:border-accent hover:text-accent"
-                >
-                  <Mail size={14} />
-                  endpoint://email
-                </MagneticButton>
-                <MagneticButton
-                  href="https://github.com/Duresa7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ui-mono-label inline-flex items-center gap-2 border border-line px-6 py-3 text-muted transition-colors hover:border-accent hover:text-accent"
-                >
-                  <Github size={14} />
-                  endpoint://github
-                </MagneticButton>
-                <MagneticButton
-                  href="https://www.linkedin.com/in/duresa-k-630039329/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ui-mono-label inline-flex items-center gap-2 border border-line px-6 py-3 text-muted transition-colors hover:border-accent hover:text-accent"
-                >
-                  <Linkedin size={14} />
-                  endpoint://linkedin
-                </MagneticButton>
+                {primaryContactLinks.map((link) => {
+                  const Icon = iconMap[link.key];
+                  const isExternal = link.href.startsWith("http");
+
+                  return (
+                    <MagneticButton
+                      key={link.key}
+                      href={link.href}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      className="ui-mono-label inline-flex items-center gap-2 border border-line px-6 py-3 text-muted transition-colors hover:border-accent hover:text-accent"
+                    >
+                      <Icon size={14} />
+                      {`endpoint://${link.key}`}
+                    </MagneticButton>
+                  );
+                })}
               </div>
             </div>
           </TerminalPanel>

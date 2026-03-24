@@ -1,3 +1,5 @@
+import { projectLinks } from "@/content/site";
+
 export interface WorkExample {
   id: string;
   title: string;
@@ -13,7 +15,7 @@ export const workExamples: WorkExample[] = [
     id: "alphasecunited",
     title: "AlphaSecUnited",
     subtitle: "Full-Stack Community Platform",
-    link: "https://www.alphasecunited.com/",
+    link: projectLinks.alphaSecUnited,
     summary: "A full-stack web platform supporting live operations for a 200+ member gaming community, featuring an interactive 3D galaxy map and real-time coordination tools.",
     tech: ["React", "TypeScript", "Vite", "Supabase", "PostgreSQL", "Three.js"],
     description: [
@@ -26,7 +28,7 @@ export const workExamples: WorkExample[] = [
     id: "valobrain",
     title: "ValoBrain",
     subtitle: "AI-Powered Esports Analytics",
-    link: "https://github.com/ivanepopov/Valobrain/",
+    link: projectLinks.valoBrain,
     summary: "An open-source AI analytics platform for competitive Valorant, used by 10+ semi-professional and professional teams for scouting and coaching intelligence.",
     tech: ["React", "TypeScript", "Node.js", "Express", "Gemini", "OpenAI", "Claude"],
     description: [

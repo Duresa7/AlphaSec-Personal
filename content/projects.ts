@@ -1,3 +1,5 @@
+import { projectLinks } from "@/content/site";
+
 export interface Project {
   name: string;
   stack: string[];
@@ -63,7 +65,7 @@ export const projects: Project[] = [
       "Developed a full-stack esports analytics dashboard at the Cloud9 x JetBrains Hackathon, delivering real-time match insights for Valorant teams and scouts using React, Node.js, and TypeScript.",
       "Managed agile workflow end-to-end in Jira, organizing backlog and sprint tasks to ensure on-time delivery of a functional end-to-end product.",
     ],
-    link: "https://github.com/Duresa7",
+    link: projectLinks.valoBrain,
     videoUrl: "/Valobrain-vid.mp4",
   },
 ];

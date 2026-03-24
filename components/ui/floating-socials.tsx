@@ -1,40 +1,37 @@
 "use client";
 
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { socialLinks } from "@/content/site";
 
-const links = [
-  {
-    href: "https://github.com/Duresa7",
-    icon: Github,
-    label: "GitHub",
-  },
-  {
-    href: "https://www.linkedin.com/in/duresa-k-630039329/",
-    icon: Linkedin,
-    label: "LinkedIn",
-  },
-  {
-    href: "mailto:duresakadi@gmail.com",
-    icon: Mail,
-    label: "Email",
-  },
-];
+const iconMap = {
+  github: Github,
+  linkedin: Linkedin,
+  mail: Mail,
+  "map-pin": MapPin,
+} as const;
 
 export function FloatingSocials() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
-      {links.map(({ href, icon: Icon, label }) => (
-        <a
-          key={label}
-          href={href}
-          target={href.startsWith("mailto:") ? undefined : "_blank"}
-          rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-          aria-label={label}
-          className="flex h-10 w-10 items-center justify-center border border-line bg-surface/90 text-muted backdrop-blur-sm transition-all hover:border-accent hover:text-accent"
-        >
-          <Icon size={16} />
-        </a>
-      ))}
+      {socialLinks
+        .filter((link) => link.icon !== "map-pin")
+        .map((link) => {
+          const Icon = iconMap[link.icon];
+          const isExternal = link.href.startsWith("http");
+
+          return (
+            <a
+              key={link.key}
+              href={link.href}
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noopener noreferrer" : undefined}
+              aria-label={link.label}
+              className="flex h-10 w-10 items-center justify-center border border-line bg-surface/90 text-muted backdrop-blur-sm transition-all hover:border-accent hover:text-accent"
+            >
+              <Icon size={16} />
+            </a>
+          );
+        })}
     </div>
   );
 }

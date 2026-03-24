@@ -1,17 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-
-const navLinks = [
-  { label: "about", href: "/#about" },
-  { label: "experience", href: "/#experience" },
-  { label: "education", href: "/#education" },
-  { label: "skills", href: "/#skills" },
-  { label: "projects", href: "/#projects" },
-  { label: "work examples", href: "/work" },
-  { label: "contact", href: "/#contact" },
-];
+import { navItems } from "@/content/site";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -48,21 +40,24 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </div>
 
           <nav className="flex flex-1 flex-col items-start justify-center gap-6 px-8">
-            {navLinks.map((link, i) => (
-              <motion.a
+            {navItems.map((link, i) => (
+              <motion.div
                 key={link.href}
-                href={link.href}
-                onClick={onClose}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 + i * 0.05 }}
-                className="network-panel w-full px-5 py-4 font-mono text-xl text-muted transition-colors hover:text-accent"
               >
-                <span className="flex items-center justify-between gap-4">
-                  <span>{link.label}</span>
-                  <span className="route-track h-3 w-20" />
-                </span>
-              </motion.a>
+                <Link
+                  href={link.href}
+                  onClick={onClose}
+                  className="network-panel block w-full px-5 py-4 font-mono text-xl text-muted transition-colors hover:text-accent"
+                >
+                  <span className="flex items-center justify-between gap-4">
+                    <span>{link.label}</span>
+                    <span className="route-track h-3 w-20" />
+                  </span>
+                </Link>
+              </motion.div>
             ))}
           </nav>
 

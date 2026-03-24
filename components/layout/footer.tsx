@@ -1,7 +1,5 @@
-"use client";
-
 import { Github, Linkedin, Mail, MapPin } from "lucide-react";
-import { socialLinks } from "@/content/social";
+import { socialLinks } from "@/content/site";
 
 const iconMap = {
   github: Github,
@@ -11,6 +9,8 @@ const iconMap = {
 };
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="relative z-10 border-t border-line">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 lg:px-8 py-10 md:flex-row md:justify-between">
@@ -18,7 +18,7 @@ export function Footer() {
           <span className="text-accent">&gt;</span>{" "}
           <span className="text-muted">duresa@kadi:~$</span>{" "}
           <span className="text-foreground/60">
-            echo &quot;&copy; {new Date().getFullYear()}&quot;
+            echo &quot;&copy; {currentYear}&quot;
           </span>
         </p>
 

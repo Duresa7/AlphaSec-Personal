@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef, useState } from "react";
 import { motion, useSpring } from "framer-motion";
 
@@ -31,6 +32,8 @@ export function MagneticButton({
 
   const x = useSpring(0, { stiffness: 200, damping: 20 });
   const y = useSpring(0, { stiffness: 200, damping: 20 });
+  const isInternalLink =
+    typeof href === "string" && (href.startsWith("/") || href.startsWith("#"));
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current || !isPointerFine) return;
@@ -46,9 +49,6 @@ export function MagneticButton({
     y.set(0);
   };
 
-  const Tag = href ? "a" : "button";
-  const linkProps = href ? { href, target, rel } : {};
-
   return (
     <div
       ref={ref}
@@ -57,13 +57,21 @@ export function MagneticButton({
       className="inline-block"
     >
       <motion.div style={{ x, y }}>
-        <Tag
-          {...linkProps}
-          onClick={onClick}
-          className={className}
-        >
-          {children}
-        </Tag>
+        {href ? (
+          isInternalLink ? (
+            <Link href={href} onClick={onClick} className={className}>
+              {children}
+            </Link>
+          ) : (
+            <a href={href} target={target} rel={rel} onClick={onClick} className={className}>
+              {children}
+            </a>
+          )
+        ) : (
+          <button type="button" onClick={onClick} className={className}>
+            {children}
+          </button>
+        )}
       </motion.div>
     </div>
   );

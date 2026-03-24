@@ -4,6 +4,7 @@ import { useState } from "react";
 import { TerminalPanel } from "@/components/ui/terminal-panel";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { primaryContactLinks, siteProfile } from "@/content/site";
 
 interface DnsRecord {
   name: string;
@@ -27,8 +28,8 @@ const records: DnsRecord[] = [
     ttl: 86400,
     class: "IN",
     type: "MX",
-    value: "10 mail.duresa.dev.  ; duresakadi@gmail.com",
-    href: "mailto:duresakadi@gmail.com",
+    value: `10 mail.duresa.dev.  ; ${siteProfile.emailAddress}`,
+    href: siteProfile.emailHref,
   },
   {
     name: "github.duresa.dev.",
@@ -36,7 +37,7 @@ const records: DnsRecord[] = [
     class: "IN",
     type: "CNAME",
     value: "github.com/Duresa7.",
-    href: "https://github.com/Duresa7",
+    href: primaryContactLinks.find((link) => link.key === "github")?.href,
   },
   {
     name: "linkedin.duresa.dev.",
@@ -44,7 +45,7 @@ const records: DnsRecord[] = [
     class: "IN",
     type: "CNAME",
     value: "linkedin.com/in/duresa-k.",
-    href: "https://www.linkedin.com/in/duresa-k-630039329/",
+    href: primaryContactLinks.find((link) => link.key === "linkedin")?.href,
   },
   {
     name: "duresa.dev.",
@@ -160,7 +161,7 @@ export function DnsLookupCard() {
       >
         <p>;; Query time: 2 msec</p>
         <p>;; SERVER: 1.1.1.1#53(1.1.1.1) (UDP)</p>
-        <p>;; WHEN: {new Date().toUTCString()}</p>
+        <p>;; WHEN: deployment snapshot</p>
         <p>;; MSG SIZE  rcvd: 284</p>
       </motion.div>
     </TerminalPanel>

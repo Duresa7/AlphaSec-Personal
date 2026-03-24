@@ -1,25 +1,43 @@
 "use client";
 
-import * as React from "react";
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import type { Testimonial } from "@/content/site";
 
-type Review = {
-  id: string | number;
-  name: string;
-  affiliation: string;
-  quote: string;
-  imageSrc: string;
-  thumbnailSrc: string;
-};
+type Review = Testimonial;
 
 interface TestimonialSliderProps {
   reviews: Review[];
   className?: string;
 }
+
+const imageVariants = {
+  enter: (direction: "left" | "right") => ({
+    y: direction === "right" ? "100%" : "-100%",
+    opacity: 0,
+  }),
+  center: { y: 0, opacity: 1 },
+  exit: (direction: "left" | "right") => ({
+    y: direction === "right" ? "-100%" : "100%",
+    opacity: 0,
+  }),
+};
+
+const textVariants = {
+  enter: (direction: "left" | "right") => ({
+    x: direction === "right" ? 50 : -50,
+    opacity: 0,
+  }),
+  center: { x: 0, opacity: 1 },
+  exit: (direction: "left" | "right") => ({
+    x: direction === "right" ? -50 : 50,
+    opacity: 0,
+  }),
+};
 
 export const TestimonialSlider = ({
   reviews,
@@ -48,30 +66,6 @@ export const TestimonialSlider = ({
   const thumbnailReviews = reviews
     .filter((_, i) => i !== currentIndex)
     .slice(0, 3);
-
-  const imageVariants = {
-    enter: (direction: "left" | "right") => ({
-      y: direction === "right" ? "100%" : "-100%",
-      opacity: 0,
-    }),
-    center: { y: 0, opacity: 1 },
-    exit: (direction: "left" | "right") => ({
-      y: direction === "right" ? "-100%" : "100%",
-      opacity: 0,
-    }),
-  };
-
-  const textVariants = {
-    enter: (direction: "left" | "right") => ({
-      x: direction === "right" ? 50 : -50,
-      opacity: 0,
-    }),
-    center: { x: 0, opacity: 1 },
-    exit: (direction: "left" | "right") => ({
-      x: direction === "right" ? -50 : 50,
-      opacity: 0,
-    }),
-  };
 
   return (
     <div
@@ -112,9 +106,12 @@ export const TestimonialSlider = ({
                   className="overflow-hidden rounded-md w-16 h-20 md:w-20 md:h-24 opacity-70 hover:opacity-100 transition-opacity duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
                   aria-label={`View review from ${review.name}`}
                 >
-                  <img
+                  <Image
                     src={review.thumbnailSrc}
                     alt={review.name}
+                    width={80}
+                    height={96}
+                    unoptimized
                     className="w-full h-full object-cover"
                   />
                 </button>
@@ -125,18 +122,26 @@ export const TestimonialSlider = ({
 
         <div className="order-1 relative h-80 min-h-[400px] md:col-span-4 md:order-2 md:min-h-[500px]">
           <AnimatePresence initial={false} custom={direction}>
-            <motion.img
+            <motion.div
               key={currentIndex}
-              src={activeReview.imageSrc}
-              alt={activeReview.name}
               custom={direction}
               variants={imageVariants}
               initial="enter"
               animate="center"
               exit="exit"
               transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-              className="absolute inset-0 h-full w-full border border-line object-cover"
-            />
+              className="absolute inset-0 overflow-hidden border border-line"
+            >
+              <Image
+                src={activeReview.imageSrc}
+                alt={activeReview.name}
+                fill
+                sizes="(min-width: 768px) 33vw, 100vw"
+                unoptimized
+                className="object-cover"
+                priority={currentIndex === 0}
+              />
+            </motion.div>
           </AnimatePresence>
           <div className="route-track pointer-events-none absolute bottom-4 left-4 right-4 h-4" />
         </div>

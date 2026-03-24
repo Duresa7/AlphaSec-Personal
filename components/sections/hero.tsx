@@ -8,6 +8,7 @@ import { Typewriter } from "@/components/ui/typewriter";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { SystemStatCard } from "@/components/ui/system-stat-card";
 import { TerminalPanel } from "@/components/ui/terminal-panel";
+import { primaryContactLinks } from "@/content/site";
 
 const commandSnapshots = [
   {
@@ -47,6 +48,8 @@ const commandSnapshots = [
 export function Hero() {
   const [typewriterDone, setTypewriterDone] = useState(false);
   const [activeCommand, setActiveCommand] = useState(0);
+  const githubLink = primaryContactLinks.find((link) => link.key === "github");
+  const emailLink = primaryContactLinks.find((link) => link.key === "email");
 
   useEffect(() => {
     if (!typewriterDone) {
@@ -98,7 +101,7 @@ export function Hero() {
             <motion.div variants={fadeInUp} className="space-y-4">
               <div className="flex flex-wrap items-center gap-4">
                 <MagneticButton
-                  href="https://github.com/Duresa7"
+                  href={githubLink?.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ui-mono-label inline-flex items-center gap-2 border border-line px-5 py-2.5 text-muted transition-colors hover:border-accent hover:text-accent"
@@ -107,7 +110,7 @@ export function Hero() {
                   GitHub
                 </MagneticButton>
                 <MagneticButton
-                  href="mailto:duresakadi@gmail.com"
+                  href={emailLink?.href}
                   className="ui-mono-label inline-flex items-center gap-2 border border-line px-5 py-2.5 text-muted transition-colors hover:border-accent hover:text-accent"
                 >
                   <Mail size={14} />

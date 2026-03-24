@@ -1,23 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const SECTION_IDS = [
-  "hero",
-  "experience",
-  "education",
-  "skills",
-  "projects",
-  "contact",
-];
+import { trackedSectionIds, type SectionId } from "@/content/site";
 
 export function useActiveSection() {
-  const [activeSection, setActiveSection] = useState<string>("hero");
+  const [activeSection, setActiveSection] = useState<SectionId | null>(null);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
-    SECTION_IDS.forEach((id) => {
+    trackedSectionIds.forEach((id) => {
       const el = document.getElementById(id);
       if (!el) return;
 

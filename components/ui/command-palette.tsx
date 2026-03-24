@@ -1,32 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Command } from "cmdk";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
-
-const sections = [
-  { label: "/about", href: "/#about" },
-  { label: "/experience", href: "/#experience" },
-  { label: "/education", href: "/#education" },
-  { label: "/skills", href: "/#skills" },
-  { label: "/projects", href: "/#projects" },
-  { label: "/work-examples", href: "/work" },
-  { label: "/contact", href: "/#contact" },
-];
-
-const links = [
-  { label: "github.com/Duresa7", href: "https://github.com/Duresa7" },
-  {
-    label: "linkedin.com/in/duresa-k",
-    href: "https://www.linkedin.com/in/duresa-k-630039329/",
-  },
-];
+import { navItems, primaryContactLinks, siteProfile } from "@/content/site";
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [easterEgg, setEasterEgg] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+  const router = useRouter();
+  const sections = navItems.map((item) => ({
+    href: item.href,
+    label: item.href === "/work" ? "/work" : item.href.replace("/#", "/"),
+  }));
+  const links = primaryContactLinks
+    .filter((link) => link.key !== "email")
+    .map((link) => ({
+      href: link.href,
+      label: link.href.replace(/^https?:\/\//, "").replace(/\/$/, ""),
+    }));
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -45,13 +40,15 @@ export function CommandPalette() {
     setOpen(false);
     if (href.startsWith("http")) {
       window.open(href, "_blank", "noopener,noreferrer");
+    } else if (href.startsWith("mailto:")) {
+      window.open(href, "_self");
     } else {
-      window.location.assign(href);
+      router.push(href);
     }
   };
 
   const copyEmail = () => {
-    navigator.clipboard.writeText("duresakadi@gmail.com");
+    void navigator.clipboard.writeText(siteProfile.emailAddress);
     setOpen(false);
   };
 
