@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
 
 const sections = [
+  { label: "/about", href: "/#about" },
   { label: "/experience", href: "/#experience" },
   { label: "/education", href: "/#education" },
   { label: "/skills", href: "/#skills" },
@@ -45,7 +46,7 @@ export function CommandPalette() {
     if (href.startsWith("http")) {
       window.open(href, "_blank", "noopener,noreferrer");
     } else {
-      window.location.href = href;
+      window.location.assign(href);
     }
   };
 
@@ -145,7 +146,7 @@ export function CommandPalette() {
                       className="flex cursor-pointer items-center gap-3 px-3 py-2 text-[12px] text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
                     >
                       <span className="text-accent/60">$</span>
-                      toggle theme
+                      theme --toggle
                     </Command.Item>
                     <Command.Item
                       value="copy email duresakadi"
@@ -154,6 +155,22 @@ export function CommandPalette() {
                     >
                       <span className="text-accent/60">$</span>
                       copy email
+                    </Command.Item>
+                    <Command.Item
+                      value="show certs certifications education"
+                      onSelect={() => navigate("/#education")}
+                      className="flex cursor-pointer items-center gap-3 px-3 py-2 text-[12px] text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
+                    >
+                      <span className="text-accent/60">$</span>
+                      show certs
+                    </Command.Item>
+                    <Command.Item
+                      value="contact --secure contact secure"
+                      onSelect={() => navigate("/#contact")}
+                      className="flex cursor-pointer items-center gap-3 px-3 py-2 text-[12px] text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
+                    >
+                      <span className="text-accent/60">$</span>
+                      contact --secure
                     </Command.Item>
                   </Command.Group>
 

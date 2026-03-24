@@ -12,7 +12,6 @@ interface VideoPlayerProps {
 export function VideoPlayer({ src, caption, className = "" }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [hasStarted, setHasStarted] = useState(false);
 
   const togglePlay = () => {
     const video = videoRef.current;
@@ -21,7 +20,6 @@ export function VideoPlayer({ src, caption, className = "" }: VideoPlayerProps) 
     if (video.paused) {
       video.play();
       setIsPlaying(true);
-      setHasStarted(true);
     } else {
       video.pause();
       setIsPlaying(false);
@@ -41,7 +39,6 @@ export function VideoPlayer({ src, caption, className = "" }: VideoPlayerProps) 
           className="h-full w-full object-cover"
           onEnded={() => {
             setIsPlaying(false);
-            setHasStarted(false);
           }}
           playsInline
           preload="metadata"
@@ -60,7 +57,7 @@ export function VideoPlayer({ src, caption, className = "" }: VideoPlayerProps) 
 
       {caption && (
         <p className="mt-2 font-mono text-[10px] text-muted">
-          // {caption}
+          {"// "} {caption}
         </p>
       )}
     </div>

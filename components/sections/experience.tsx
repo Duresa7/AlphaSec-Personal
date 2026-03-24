@@ -1,71 +1,116 @@
 "use client";
 
+import { useState } from "react";
 import { experience } from "@/content/experience";
 import { SectionDivider } from "@/components/ui/section-divider";
+import { StatusPill } from "@/components/ui/status-pill";
+import { SystemctlTimeline } from "@/components/ui/systemctl-timeline";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { motion } from "framer-motion";
 
 export function Experience() {
+  const [view, setView] = useState<"timeline" | "systemctl">("timeline");
+
   return (
-    <section id="experience" className="py-10 md:py-14">
+    <section id="experience" className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <SectionDivider label="experience" />
+        <SectionDivider label="experience" step="03" status="ops timeline" />
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="mt-14 relative"
-        >
-          {/* Vertical accent line */}
-          <div className="absolute left-0 top-0 bottom-0 w-px bg-accent/20 hidden md:block" />
+        {/* View toggle */}
+        <div className="mt-8 flex items-center gap-3 font-mono text-[11px]">
+          <span className="text-muted/40">view:</span>
+          <button
+            onClick={() => setView("timeline")}
+            className={`border px-3 py-1.5 uppercase tracking-widest transition-colors ${
+              view === "timeline"
+                ? "border-accent/40 text-accent bg-accent-dim/30"
+                : "border-line text-muted hover:border-accent/20 hover:text-foreground"
+            }`}
+          >
+            timeline
+          </button>
+          <button
+            onClick={() => setView("systemctl")}
+            className={`border px-3 py-1.5 uppercase tracking-widest transition-colors ${
+              view === "systemctl"
+                ? "border-accent/40 text-accent bg-accent-dim/30"
+                : "border-line text-muted hover:border-accent/20 hover:text-foreground"
+            }`}
+          >
+            systemctl
+          </button>
+        </div>
 
-          <div className="space-y-16">
-            {experience.map((job, index) => (
-              <motion.div
-                key={job.company}
-                variants={fadeInUp}
-                className="grid gap-4 md:grid-cols-[200px_1fr] md:pl-8 relative"
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-[-3px] top-1 h-[7px] w-[7px] bg-accent hidden md:block" />
+        {view === "timeline" ? (
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="relative mt-8"
+          >
+            <div className="absolute bottom-0 left-[13px] top-0 hidden w-px bg-gradient-to-b from-accent/10 via-accent/70 to-transparent lg:block" />
 
-                <div>
-                  <p className="font-mono text-xs text-accent">
-                    {job.period}
-                  </p>
-                  <p className="mt-1 font-mono text-[11px] text-muted/60">
-                    {job.location}
-                  </p>
-                </div>
+            <div className="space-y-16">
+              {experience.map((job, index) => (
+                <motion.div
+                  key={job.company}
+                  variants={fadeInUp}
+                  className="relative lg:pl-12"
+                >
+                  <div className="route-node absolute -left-[40px] top-3 hidden lg:block" />
 
-                <div>
-                  <h3 className="font-heading text-lg font-semibold">
-                    {job.role}
-                  </h3>
-                  <p className="mt-0.5 font-mono text-sm text-muted">
-                    {job.company}
-                  </p>
+                  <div className="grid gap-5 lg:grid-cols-[220px_1fr]">
+                  <div>
+                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+                      {job.period}
+                    </p>
+                    <p className="mt-2 font-mono text-[11px] tracking-[0.18em] text-muted/70">
+                      {job.location}
+                    </p>
+                  </div>
 
-                  <ul className="mt-4 space-y-3 max-w-2xl">
-                    {job.bullets.map((bullet, i) => (
-                      <li
-                        key={i}
-                        className="relative pl-5 text-sm leading-relaxed text-muted"
-                      >
-                        <span className="absolute left-0 top-0 font-mono text-accent/40">
-                          &gt;
-                        </span>
-                        {bullet}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
+                  <div className="network-panel p-5 md:p-6">
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div>
+                        <h3 className="font-heading text-lg font-semibold">
+                          {job.role}
+                        </h3>
+                        <p className="mt-1 font-mono text-sm text-muted">
+                          {job.company}
+                        </p>
+                      </div>
+                      <StatusPill status="active">
+                        node {String(index + 1).padStart(2, "0")}
+                      </StatusPill>
+                    </div>
+
+                    <div className="mt-5 route-track h-4" />
+
+                    <ul className="mt-5 max-w-2xl space-y-3">
+                      {job.bullets.map((bullet, i) => (
+                        <li
+                          key={i}
+                          className="relative pl-5 text-sm leading-relaxed text-muted"
+                        >
+                          <span className="absolute left-0 top-0 font-mono text-accent/50">
+                            &gt;
+                          </span>
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        ) : (
+          <div className="mt-8">
+            <SystemctlTimeline />
           </div>
-        </motion.div>
+        )}
       </div>
     </section>
   );

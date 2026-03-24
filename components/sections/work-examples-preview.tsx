@@ -3,16 +3,21 @@
 import { workExamples } from "@/content/work-examples";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { MagneticButton } from "@/components/ui/magnetic-button";
+import { StatusPill } from "@/components/ui/status-pill";
+import { TerminalPanel } from "@/components/ui/terminal-panel";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink } from "lucide-react";
-import Link from "next/link";
 
 export function WorkExamplesPreview() {
   return (
-    <section className="py-10 md:py-14">
+    <section className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <SectionDivider label="work examples" />
+        <SectionDivider
+          label="work examples"
+          step="07"
+          status="detailed breakdowns"
+        />
 
         <motion.div
           variants={staggerContainer}
@@ -22,54 +27,54 @@ export function WorkExamplesPreview() {
           className="mt-14 space-y-6"
         >
           {workExamples.map((example, index) => (
-            <motion.div
-              key={example.id}
-              variants={fadeInUp}
-              className="group border border-line p-6 transition-all hover:border-accent/40 hover:shadow-[0_0_20px_var(--accent-dim)] md:p-8"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex items-baseline gap-4">
-                  <span className="font-mono text-[11px] text-accent/40">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h3 className="font-heading text-lg font-semibold">
-                      {example.title}
-                    </h3>
-                    <p className="mt-0.5 font-mono text-[11px] text-muted/60">
-                      {example.subtitle}
-                    </p>
-                  </div>
-                </div>
-                {example.link && (
-                  <a
-                    href={example.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-shrink-0 text-muted transition-colors hover:text-accent"
-                    aria-label={`View ${example.title}`}
-                  >
-                    <ExternalLink size={16} />
-                  </a>
-                )}
-              </div>
-
-              <p className="mt-4 max-w-prose text-sm leading-relaxed text-muted">
-                {example.summary}
-              </p>
-
-              {example.tech && (
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {example.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="border border-accent/20 px-2 py-0.5 font-mono text-[11px] text-accent"
-                    >
-                      {t}
+            <motion.div key={example.id} variants={fadeInUp} className="group">
+              <TerminalPanel
+                title={example.title}
+                subtitle={example.subtitle}
+                status={`record ${String(index + 1).padStart(2, "0")}`}
+                bodyClassName="p-6 md:p-8"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-baseline gap-4">
+                    <span className="font-mono text-[11px] text-accent/40">
+                      {String(index + 1).padStart(2, "0")}
                     </span>
-                  ))}
+                    <div>
+                      <h3 className="font-heading text-lg font-semibold">
+                        {example.title}
+                      </h3>
+                      <p className="mt-0.5 font-mono text-[11px] text-muted/60">
+                        {example.subtitle}
+                      </p>
+                    </div>
+                  </div>
+                  {example.link && (
+                    <a
+                      href={example.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-shrink-0 text-muted transition-colors hover:text-accent"
+                      aria-label={`View ${example.title}`}
+                    >
+                      <ExternalLink size={16} />
+                    </a>
+                  )}
                 </div>
-              )}
+
+                <p className="mt-4 max-w-prose text-sm leading-relaxed text-muted">
+                  {example.summary}
+                </p>
+
+                {example.tech && (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {example.tech.map((t) => (
+                      <StatusPill key={t}>{t}</StatusPill>
+                    ))}
+                  </div>
+                )}
+
+                <div className="mt-6 route-track h-4" />
+              </TerminalPanel>
             </motion.div>
           ))}
         </motion.div>

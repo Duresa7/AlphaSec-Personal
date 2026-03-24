@@ -2,16 +2,17 @@
 
 import { education, certifications } from "@/content/education";
 import { SectionDivider } from "@/components/ui/section-divider";
-import { AnimateIn } from "@/components/motion/animate-in";
+import { StatusPill } from "@/components/ui/status-pill";
+import { TerminalPanel } from "@/components/ui/terminal-panel";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { motion } from "framer-motion";
 import { Shield } from "lucide-react";
 
 export function Education() {
   return (
-    <section id="education" className="py-10 md:py-14">
+    <section id="education" className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <SectionDivider label="education" />
+        <SectionDivider label="education" step="04" status="training path" />
 
         <motion.div
           variants={staggerContainer}
@@ -24,9 +25,11 @@ export function Education() {
             <motion.div
               key={edu.school}
               variants={fadeInUp}
-              className="border border-line p-6 transition-colors hover:border-accent/30"
+              className="network-panel p-6 transition-colors hover:border-accent/30"
             >
-              <p className="font-mono text-xs text-accent">{edu.expected}</p>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+                {edu.expected}
+              </p>
 
               <h3 className="mt-3 font-heading text-lg font-semibold">
                 {edu.degree}
@@ -44,12 +47,9 @@ export function Education() {
               {edu.honors && (
                 <div className="mt-3 flex flex-wrap gap-2">
                   {edu.honors.map((honor) => (
-                    <span
-                      key={honor}
-                      className="inline-flex items-center gap-1 border border-accent/30 px-2 py-0.5 font-mono text-[11px] text-accent"
-                    >
+                    <StatusPill key={honor} status="active">
                       {honor}
-                    </span>
+                    </StatusPill>
                   ))}
                 </div>
               )}
@@ -75,11 +75,13 @@ export function Education() {
           ))}
         </motion.div>
 
-        <AnimateIn className="mt-14">
-          <p className="font-mono text-[10px] uppercase tracking-widest text-muted/50">
-            // certifications
-          </p>
-          <div className="mt-4 flex flex-wrap gap-3">
+        <TerminalPanel
+          title="credential store"
+          subtitle="validated certifications"
+          status="synced"
+          className="mt-14"
+        >
+          <div className="flex flex-wrap gap-3 p-6">
             {certifications.map((cert) => (
               <span
                 key={cert}
@@ -90,7 +92,7 @@ export function Education() {
               </span>
             ))}
           </div>
-        </AnimateIn>
+        </TerminalPanel>
       </div>
     </section>
   );

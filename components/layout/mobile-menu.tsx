@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
 const navLinks = [
+  { label: "about", href: "/#about" },
   { label: "experience", href: "/#experience" },
   { label: "education", href: "/#education" },
   { label: "skills", href: "/#skills" },
@@ -28,17 +29,25 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
           className="fixed inset-0 z-50 flex flex-col bg-background"
         >
-          <div className="flex h-14 items-center justify-end px-6">
+          <div className="flex h-16 items-center justify-between border-b border-line px-6">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+                session active
+              </p>
+              <p className="mt-1 font-mono text-[10px] tracking-[0.18em] text-muted">
+                operator routing enabled
+              </p>
+            </div>
             <button
               onClick={onClose}
-              className="flex h-8 w-8 items-center justify-center border border-line text-muted transition-colors hover:text-foreground"
+              className="flex h-9 w-9 items-center justify-center border border-line text-muted transition-colors hover:border-accent hover:text-accent"
               aria-label="Close menu"
             >
               <X size={16} />
             </button>
           </div>
 
-          <nav className="flex flex-1 flex-col items-start justify-center gap-8 px-8">
+          <nav className="flex flex-1 flex-col items-start justify-center gap-6 px-8">
             {navLinks.map((link, i) => (
               <motion.a
                 key={link.href}
@@ -47,15 +56,18 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 + i * 0.05 }}
-                className="font-mono text-2xl text-muted transition-colors hover:text-accent"
+                className="network-panel w-full px-5 py-4 font-mono text-xl text-muted transition-colors hover:text-accent"
               >
-                {link.label}
+                <span className="flex items-center justify-between gap-4">
+                  <span>{link.label}</span>
+                  <span className="route-track h-3 w-20" />
+                </span>
               </motion.a>
             ))}
           </nav>
 
-          <div className="px-8 pb-8">
-            <p className="font-mono text-[10px] text-muted">
+          <div className="border-t border-line px-8 pb-8 pt-6">
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">
               <span className="text-accent">cmd+k</span> for quick nav
             </p>
           </div>

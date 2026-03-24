@@ -22,7 +22,6 @@ const reviews = [
     imageSrc: "/katie.jpg",
     thumbnailSrc: "/katie.jpg",
   },
-
   {
     id: 4,
     name: "Ahmed Haji",
@@ -36,9 +35,13 @@ const reviews = [
 
 export function TestimonialsSection() {
   return (
-    <section className="py-10 md:py-14">
+    <section className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <SectionDivider label="testimonials" />
+        <SectionDivider
+          label="operator feedback"
+          step="02"
+          status="trusted channel"
+        />
         <TestimonialSlider reviews={reviews} className="mt-14" />
       </div>
     </section>

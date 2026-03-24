@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface TypewriterProps {
   text: string;
@@ -18,27 +18,27 @@ export function Typewriter({
   className = "",
 }: TypewriterProps) {
   const [displayedText, setDisplayedText] = useState("");
-  const [started, setStarted] = useState(false);
-  const [done, setDone] = useState(false);
+  const completionRef = useRef(false);
+  const done = displayedText.length >= text.length;
 
   useEffect(() => {
-    const delayTimer = setTimeout(() => setStarted(true), delay);
-    return () => clearTimeout(delayTimer);
-  }, [delay]);
+    if (done) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setDisplayedText(text.slice(0, displayedText.length + 1));
+    }, displayedText.length === 0 ? delay : speed);
+
+    return () => window.clearTimeout(timer);
+  }, [delay, displayedText, done, speed, text]);
 
   useEffect(() => {
-    if (!started) return;
-
-    if (displayedText.length < text.length) {
-      const timer = setTimeout(() => {
-        setDisplayedText(text.slice(0, displayedText.length + 1));
-      }, speed);
-      return () => clearTimeout(timer);
-    } else {
-      setDone(true);
+    if (done && !completionRef.current) {
+      completionRef.current = true;
       onComplete?.();
     }
-  }, [started, displayedText, text, speed, onComplete]);
+  }, [done, onComplete]);
 
   return (
     <span className={className}>

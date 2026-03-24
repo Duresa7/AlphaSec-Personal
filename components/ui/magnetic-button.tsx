@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { motion, useSpring } from "framer-motion";
 
 interface MagneticButtonProps {
@@ -23,14 +23,14 @@ export function MagneticButton({
   strength = 0.3,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [isPointerFine, setIsPointerFine] = useState(false);
+  const [isPointerFine] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(pointer: fine)").matches
+  );
 
   const x = useSpring(0, { stiffness: 200, damping: 20 });
   const y = useSpring(0, { stiffness: 200, damping: 20 });
-
-  useEffect(() => {
-    setIsPointerFine(window.matchMedia("(pointer: fine)").matches);
-  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current || !isPointerFine) return;

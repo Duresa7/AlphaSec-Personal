@@ -76,12 +76,20 @@ export const TestimonialSlider = ({
   return (
     <div
       className={cn(
-        "relative w-full min-h-[650px] md:min-h-[600px] overflow-hidden bg-background text-foreground p-8 md:p-12",
+        "network-panel relative w-full min-h-[650px] overflow-hidden bg-background p-8 text-foreground md:min-h-[600px] md:p-12",
         className
       )}
     >
+      <div className="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between border-b border-line/80 px-5 py-3">
+        <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+          operator feedback
+        </span>
+        <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">
+          trusted signals
+        </span>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 h-full">
-        <div className="md:col-span-2 flex flex-col justify-between order-2 md:order-1">
+        <div className="order-2 flex flex-col justify-between md:col-span-2 md:order-1">
           <div className="flex flex-row md:flex-col justify-between md:justify-start space-x-4 md:space-x-0 md:space-y-4">
             <span className="text-sm text-muted font-mono">
               {String(currentIndex + 1).padStart(2, "0")} /{" "}
@@ -115,7 +123,7 @@ export const TestimonialSlider = ({
           </div>
         </div>
 
-        <div className="md:col-span-4 relative h-80 min-h-[400px] md:min-h-[500px] order-1 md:order-2">
+        <div className="order-1 relative h-80 min-h-[400px] md:col-span-4 md:order-2 md:min-h-[500px]">
           <AnimatePresence initial={false} custom={direction}>
             <motion.img
               key={currentIndex}
@@ -127,12 +135,13 @@ export const TestimonialSlider = ({
               animate="center"
               exit="exit"
               transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-              className="absolute inset-0 w-full h-full object-cover rounded-lg"
+              className="absolute inset-0 h-full w-full border border-line object-cover"
             />
           </AnimatePresence>
+          <div className="route-track pointer-events-none absolute bottom-4 left-4 right-4 h-4" />
         </div>
 
-        <div className="md:col-span-6 flex flex-col justify-between order-3 md:order-3">
+        <div className="order-3 flex flex-col justify-between md:col-span-6 md:order-3">
           <div className="relative overflow-hidden pt-4 md:pt-12 min-h-[200px]">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
@@ -144,13 +153,13 @@ export const TestimonialSlider = ({
                 exit="exit"
                 transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
               >
-                <p className="text-sm font-medium text-muted">
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
                   {activeReview.affiliation}
                 </p>
-                <h3 className="text-xl font-semibold mt-1">
+                <h3 className="mt-2 text-xl font-semibold">
                   {activeReview.name}
                 </h3>
-                <blockquote className="mt-6 text-lg md:text-xl font-medium leading-relaxed">
+                <blockquote className="mt-6 border-l border-accent/35 pl-5 text-lg font-medium leading-relaxed md:text-xl">
                   &ldquo;{activeReview.quote}&rdquo;
                 </blockquote>
               </motion.div>
