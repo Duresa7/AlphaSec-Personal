@@ -27,19 +27,19 @@ export function Education() {
               variants={fadeInUp}
               className="network-panel p-6 transition-colors hover:border-accent/30"
             >
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+              <p className="ui-mono-label text-accent">
                 {edu.expected}
               </p>
 
               <h3 className="mt-3 font-heading text-lg font-semibold">
                 {edu.degree}
               </h3>
-              <p className="mt-1 font-mono text-[12px] text-muted">
+              <p className="ui-mono-meta mt-1 text-muted">
                 {edu.school}
               </p>
 
               {edu.gpa && (
-                <p className="mt-2 font-mono text-[11px] text-muted/60">
+                <p className="ui-mono-meta mt-2 text-muted/60">
                   GPA: {edu.gpa}
                 </p>
               )}
@@ -56,14 +56,14 @@ export function Education() {
 
               {edu.coursework && (
                 <div className="mt-4">
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-muted/50">
+                  <p className="ui-mono-label text-muted/50">
                     coursework
                   </p>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {edu.coursework.map((course) => (
                       <span
                         key={course}
-                        className="border border-line bg-background/55 px-3 py-1.5 font-mono text-xs text-muted transition-all hover:border-accent/50 hover:text-foreground"
+                        className="ui-mono-chip border border-line bg-background/55 px-3 py-1.5 text-muted transition-all hover:border-accent/50 hover:text-foreground"
                       >
                         {course}
                       </span>
@@ -85,7 +85,7 @@ export function Education() {
             {certifications.map((cert) => (
               <span
                 key={cert}
-                className="inline-flex items-center gap-2 border border-line px-4 py-2.5 font-mono text-sm transition-colors hover:border-accent/30"
+                className="ui-mono-body inline-flex items-center gap-2 border border-line px-4 py-2.5 transition-colors hover:border-accent/30"
               >
                 <Shield size={14} className="text-accent" />
                 {cert}

@@ -29,7 +29,7 @@ function ServiceCard({
       <button
         onClick={() => setExpanded(!expanded)}
         className={cn(
-          "w-full text-left font-mono text-xs transition-colors",
+          "ui-mono-body w-full text-left transition-colors",
           "border border-line/70 bg-background/40 p-4 hover:border-accent/30",
           expanded && "border-b-0"
         )}
@@ -59,7 +59,7 @@ function ServiceCard({
       >
         <div className="border border-t-0 border-line/70 bg-background/30 p-4 md:p-5">
           {/* Unit file */}
-          <div className="space-y-0.5 font-mono text-[11px]">
+          <div className="ui-mono-meta space-y-0.5">
             <p className="text-accent font-medium">[Unit]</p>
             <p>
               <span className="text-muted/50">Description=</span>
@@ -109,13 +109,13 @@ function ServiceCard({
 
           {/* Journal entries */}
           <div className="mt-5 border-t border-line/50 pt-4">
-            <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-muted/40">
+            <p className="ui-mono-label mb-2 text-muted/40">
               journalctl -u {serviceName} --no-pager -n {job.bullets.length}
             </p>
 
             <div className="space-y-1.5">
               {job.bullets.map((bullet, i) => (
-                <div key={i} className="font-mono text-[11px]">
+                <div key={i} className="ui-mono-meta">
                   <span className="text-muted/40">{job.period.split("-")[0].trim()} </span>
                   <span className="text-accent/60">{slugify(job.company)}[{3000 + index * 100 + i}]: </span>
                   <span className="text-muted/80">{bullet}</span>
@@ -150,7 +150,7 @@ export function SystemctlTimeline() {
       </motion.div>
 
       <div className="mt-4 border-t border-line/50 pt-3">
-        <p className="font-mono text-[11px] text-muted/40">
+        <p className="ui-mono-meta text-muted/40">
           {experience.length} units listed. {experience.filter((_, i) => i === 0).length} active.
         </p>
       </div>

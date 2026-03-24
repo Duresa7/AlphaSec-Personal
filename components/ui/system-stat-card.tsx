@@ -21,7 +21,7 @@ export function SystemStatCard({
   return (
     <div className={cn("network-panel px-4 py-4", className)}>
       <div className="flex items-start justify-between gap-3">
-        <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-muted/72">
+        <p className="ui-mono-label text-muted/72">
           {label}
         </p>
         {status && (
@@ -34,7 +34,7 @@ export function SystemStatCard({
         {value}
       </p>
       {meta && (
-        <p className="mt-3 font-mono text-[11px] leading-relaxed text-muted">
+        <p className="ui-mono-body mt-3 text-muted">
           {meta}
         </p>
       )}

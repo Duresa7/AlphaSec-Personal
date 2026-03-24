@@ -34,12 +34,12 @@ export function TerminalPanel({
             </div>
             <div className="min-w-0">
               {title && (
-                <p className="truncate font-mono text-[11px] uppercase tracking-[0.22em] text-foreground/86">
+                <p className="ui-mono-label truncate text-foreground/86">
                   {title}
                 </p>
               )}
               {subtitle && (
-                <p className="truncate font-mono text-[10px] tracking-[0.18em] text-muted/70">
+                <p className="ui-mono-meta truncate text-muted/70">
                   {subtitle}
                 </p>
               )}

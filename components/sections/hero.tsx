@@ -90,10 +90,7 @@ export function Hero() {
             KADI
           </motion.h1>
 
-          <motion.p
-            variants={fadeInUp}
-            className="mt-2 font-mono text-xs uppercase tracking-[0.2em] text-muted"
-          >
+          <motion.p variants={fadeInUp} className="ui-mono-label mt-3 text-muted">
             IT &amp; security professional
           </motion.p>
 
@@ -104,14 +101,14 @@ export function Hero() {
                   href="https://github.com/Duresa7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-line px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:border-accent hover:text-accent"
+                  className="ui-mono-label inline-flex items-center gap-2 border border-line px-5 py-2.5 text-muted transition-colors hover:border-accent hover:text-accent"
                 >
                   <Github size={14} />
                   GitHub
                 </MagneticButton>
                 <MagneticButton
                   href="mailto:duresakadi@gmail.com"
-                  className="inline-flex items-center gap-2 border border-line px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:border-accent hover:text-accent"
+                  className="ui-mono-label inline-flex items-center gap-2 border border-line px-5 py-2.5 text-muted transition-colors hover:border-accent hover:text-accent"
                 >
                   <Mail size={14} />
                   Email
@@ -146,15 +143,15 @@ export function Hero() {
                 status="live"
               >
                 <div className="space-y-4 p-5">
-                  <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted">
+                  <div className="ui-mono-label text-muted">
                     <span className="text-accent">~</span> active snapshot
                   </div>
-                  <div className="border border-line/70 bg-background/60 p-4 font-mono text-sm">
+                  <div className="ui-mono-body border border-line/70 bg-background/60 p-4">
                     <div className="text-accent">
                       <span className="text-muted">&gt; </span>
                       {commandSnapshots[activeCommand].command}
                     </div>
-                    <div className="mt-4 space-y-2 text-[12px] text-muted">
+                    <div className="ui-mono-meta mt-4 space-y-2 text-muted">
                       {commandSnapshots[activeCommand].output.map((line) => (
                         <div key={line} className="flex gap-3">
                           <span className="text-accent/60">|</span>

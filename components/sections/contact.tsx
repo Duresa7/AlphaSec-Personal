@@ -35,7 +35,7 @@ export function Contact() {
                 Let&apos;s connect
               </h2>
 
-              <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted">
+              <p className="ui-copy-support mx-auto mt-4 max-w-md text-muted">
                 Currently seeking any IT opportunities. Feel free to reach out.
               </p>
 
@@ -48,7 +48,7 @@ export function Contact() {
               <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
                 <MagneticButton
                   href="mailto:duresakadi@gmail.com"
-                  className="inline-flex items-center gap-2 border border-line px-6 py-3 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:border-accent hover:text-accent"
+                  className="ui-mono-label inline-flex items-center gap-2 border border-line px-6 py-3 text-muted transition-colors hover:border-accent hover:text-accent"
                 >
                   <Mail size={14} />
                   endpoint://email
@@ -57,7 +57,7 @@ export function Contact() {
                   href="https://github.com/Duresa7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-line px-6 py-3 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:border-accent hover:text-accent"
+                  className="ui-mono-label inline-flex items-center gap-2 border border-line px-6 py-3 text-muted transition-colors hover:border-accent hover:text-accent"
                 >
                   <Github size={14} />
                   endpoint://github
@@ -66,7 +66,7 @@ export function Contact() {
                   href="https://www.linkedin.com/in/duresa-k-630039329/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-line px-6 py-3 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:border-accent hover:text-accent"
+                  className="ui-mono-label inline-flex items-center gap-2 border border-line px-6 py-3 text-muted transition-colors hover:border-accent hover:text-accent"
                 >
                   <Linkedin size={14} />
                   endpoint://linkedin
@@ -80,7 +80,7 @@ export function Contact() {
         <div className="mt-6 flex justify-center">
           <button
             onClick={() => setShowExtras(!showExtras)}
-            className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-muted/50 transition-colors hover:text-accent"
+            className="ui-mono-label flex items-center gap-2 text-muted/50 transition-colors hover:text-accent"
           >
             {"// dns records & schedule"}
             {showExtras ? <ChevronUp size={12} /> : <ChevronDown size={12} />}

@@ -25,7 +25,7 @@ export function StatusPill({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.22em]",
+        "ui-mono-label inline-flex items-center gap-2 border px-2.5 py-1",
         statusStyles[status],
         className
       )}

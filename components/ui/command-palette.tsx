@@ -101,18 +101,18 @@ export function CommandPalette() {
               </div>
 
               {easterEgg ? (
-                <div className="p-4 text-[11px] text-accent">
+                <div className="ui-mono-meta p-4 text-accent">
                   nice try. // access denied
                 </div>
               ) : (
                 <Command.List className="max-h-64 overflow-y-auto p-2">
-                  <Command.Empty className="px-4 py-3 text-[11px] text-muted">
+                  <Command.Empty className="ui-mono-meta px-4 py-3 text-muted">
                     no results found.
                   </Command.Empty>
 
                   <Command.Group
                     heading={
-                      <span className="px-2 text-[10px] uppercase tracking-widest text-muted/50">
+                      <span className="ui-mono-label px-2 text-muted/50">
                         navigate
                       </span>
                     }
@@ -122,7 +122,7 @@ export function CommandPalette() {
                         key={s.href}
                         value={`navigate ${s.label}`}
                         onSelect={() => navigate(s.href)}
-                        className="flex cursor-pointer items-center gap-3 px-3 py-2 text-[12px] text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
+                        className="ui-mono-meta flex cursor-pointer items-center gap-3 px-3 py-2 text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
                       >
                         <span className="text-accent/60">~</span>
                         {s.label}
@@ -132,7 +132,7 @@ export function CommandPalette() {
 
                   <Command.Group
                     heading={
-                      <span className="mt-2 block px-2 text-[10px] uppercase tracking-widest text-muted/50">
+                      <span className="ui-mono-label mt-2 block px-2 text-muted/50">
                         actions
                       </span>
                     }
@@ -143,7 +143,7 @@ export function CommandPalette() {
                         setTheme(resolvedTheme === "dark" ? "light" : "dark");
                         setOpen(false);
                       }}
-                      className="flex cursor-pointer items-center gap-3 px-3 py-2 text-[12px] text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
+                      className="ui-mono-meta flex cursor-pointer items-center gap-3 px-3 py-2 text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
                     >
                       <span className="text-accent/60">$</span>
                       theme --toggle
@@ -151,7 +151,7 @@ export function CommandPalette() {
                     <Command.Item
                       value="copy email duresakadi"
                       onSelect={copyEmail}
-                      className="flex cursor-pointer items-center gap-3 px-3 py-2 text-[12px] text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
+                      className="ui-mono-meta flex cursor-pointer items-center gap-3 px-3 py-2 text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
                     >
                       <span className="text-accent/60">$</span>
                       copy email
@@ -159,7 +159,7 @@ export function CommandPalette() {
                     <Command.Item
                       value="show certs certifications education"
                       onSelect={() => navigate("/#education")}
-                      className="flex cursor-pointer items-center gap-3 px-3 py-2 text-[12px] text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
+                      className="ui-mono-meta flex cursor-pointer items-center gap-3 px-3 py-2 text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
                     >
                       <span className="text-accent/60">$</span>
                       show certs
@@ -167,7 +167,7 @@ export function CommandPalette() {
                     <Command.Item
                       value="contact --secure contact secure"
                       onSelect={() => navigate("/#contact")}
-                      className="flex cursor-pointer items-center gap-3 px-3 py-2 text-[12px] text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
+                      className="ui-mono-meta flex cursor-pointer items-center gap-3 px-3 py-2 text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
                     >
                       <span className="text-accent/60">$</span>
                       contact --secure
@@ -176,7 +176,7 @@ export function CommandPalette() {
 
                   <Command.Group
                     heading={
-                      <span className="mt-2 block px-2 text-[10px] uppercase tracking-widest text-muted/50">
+                      <span className="ui-mono-label mt-2 block px-2 text-muted/50">
                         links
                       </span>
                     }
@@ -186,7 +186,7 @@ export function CommandPalette() {
                         key={l.href}
                         value={`link ${l.label}`}
                         onSelect={() => navigate(l.href)}
-                        className="flex cursor-pointer items-center gap-3 px-3 py-2 text-[12px] text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
+                        className="ui-mono-meta flex cursor-pointer items-center gap-3 px-3 py-2 text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
                       >
                         <span className="text-accent/60">&gt;</span>
                         {l.label}

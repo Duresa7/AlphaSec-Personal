@@ -17,11 +17,11 @@ export function Experience() {
         <SectionDivider label="experience" step="03" status="ops timeline" />
 
         {/* View toggle */}
-        <div className="mt-8 flex items-center gap-3 font-mono text-[11px]">
+        <div className="ui-mono-meta mt-8 flex items-center gap-3">
           <span className="text-muted/40">view:</span>
           <button
             onClick={() => setView("timeline")}
-            className={`border px-3 py-1.5 uppercase tracking-widest transition-colors ${
+            className={`ui-mono-label border px-3 py-1.5 transition-colors ${
               view === "timeline"
                 ? "border-accent/40 text-accent bg-accent-dim/30"
                 : "border-line text-muted hover:border-accent/20 hover:text-foreground"
@@ -31,7 +31,7 @@ export function Experience() {
           </button>
           <button
             onClick={() => setView("systemctl")}
-            className={`border px-3 py-1.5 uppercase tracking-widest transition-colors ${
+            className={`ui-mono-label border px-3 py-1.5 transition-colors ${
               view === "systemctl"
                 ? "border-accent/40 text-accent bg-accent-dim/30"
                 : "border-line text-muted hover:border-accent/20 hover:text-foreground"
@@ -62,10 +62,10 @@ export function Experience() {
 
                   <div className="grid gap-5 lg:grid-cols-[220px_1fr]">
                   <div>
-                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+                    <p className="ui-mono-label text-accent">
                       {job.period}
                     </p>
-                    <p className="mt-2 font-mono text-[11px] tracking-[0.18em] text-muted/70">
+                    <p className="ui-mono-meta mt-2 text-muted/70">
                       {job.location}
                     </p>
                   </div>

@@ -22,11 +22,11 @@ export function Skills() {
         <SectionDivider label="skills" step="05" status="module inventory" />
 
         {/* View toggle */}
-        <div className="mt-8 flex items-center gap-3 font-mono text-[11px]">
+        <div className="ui-mono-meta mt-8 flex items-center gap-3">
           <span className="text-muted/40">view:</span>
           <button
             onClick={() => setView("list")}
-            className={`border px-3 py-1.5 uppercase tracking-widest transition-colors ${
+            className={`ui-mono-label border px-3 py-1.5 transition-colors ${
               view === "list"
                 ? "border-accent/40 text-accent bg-accent-dim/30"
                 : "border-line text-muted hover:border-accent/20 hover:text-foreground"
@@ -36,7 +36,7 @@ export function Skills() {
           </button>
           <button
             onClick={() => setView("scan")}
-            className={`border px-3 py-1.5 uppercase tracking-widest transition-colors ${
+            className={`ui-mono-label border px-3 py-1.5 transition-colors ${
               view === "scan"
                 ? "border-accent/40 text-accent bg-accent-dim/30"
                 : "border-line text-muted hover:border-accent/20 hover:text-foreground"
@@ -64,7 +64,7 @@ export function Skills() {
                   bodyClassName="p-5"
                 >
                   <div className="flex items-center justify-between gap-4">
-                    <p className="font-mono text-[11px] text-muted">
+                    <p className="ui-mono-meta text-muted">
                       <span className="text-accent">~/{slugify(category.label)}</span>
                       <span className="text-muted/40"> $ </span>
                       <span className="text-muted/60">ls</span>
@@ -76,7 +76,7 @@ export function Skills() {
                     {category.items.map((item) => (
                       <span
                         key={item}
-                        className="border border-line bg-background/55 px-3 py-1.5 font-mono text-xs text-muted transition-all hover:border-accent/50 hover:text-foreground"
+                        className="ui-mono-chip border border-line bg-background/55 px-3 py-1.5 text-muted transition-all hover:border-accent/50 hover:text-foreground"
                       >
                         {item}
                       </span>

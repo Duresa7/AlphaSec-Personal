@@ -126,6 +126,40 @@ body {
   font-family: var(--font-outfit), system-ui, sans-serif;
 }
 
+.ui-mono-label {
+  font-family: var(--font-ibm-plex-mono), ui-monospace, "Cascadia Code", "Fira Code", monospace;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.ui-mono-meta {
+  font-family: var(--font-ibm-plex-mono), ui-monospace, "Cascadia Code", "Fira Code", monospace;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+}
+
+.ui-mono-body {
+  font-family: var(--font-ibm-plex-mono), ui-monospace, "Cascadia Code", "Fira Code", monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+.ui-mono-chip {
+  font-family: var(--font-ibm-plex-mono), ui-monospace, "Cascadia Code", "Fira Code", monospace;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+.ui-copy-support {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
 .network-panel {
   position: relative;
   overflow: hidden;

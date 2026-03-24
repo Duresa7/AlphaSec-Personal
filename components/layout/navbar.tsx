@@ -40,7 +40,7 @@ export function Navbar() {
             </div>
             <div className="hidden items-center gap-3 md:flex">
               <span className="route-node" />
-              <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.24em] text-muted">
+              <div className="ui-mono-label flex items-center gap-2 text-muted">
                 <span className="text-accent">session: active</span>
                 <span className="text-muted/45">|</span>
                 <span>mode: ops</span>
@@ -53,7 +53,7 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="group relative font-mono text-[11px] lowercase tracking-wider text-muted transition-colors hover:text-foreground"
+                className="ui-mono-meta group relative lowercase text-muted transition-colors hover:text-foreground"
               >
                 {link.label}
                 {activeSection === link.id && (

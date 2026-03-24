@@ -29,17 +29,17 @@ export function SectionDivider({
       <div className="hidden h-px flex-1 bg-line/80 md:block" />
       <div className="network-panel flex min-w-0 flex-1 items-center gap-4 px-4 py-3 md:flex-none md:min-w-[340px]">
         <div className="flex items-center gap-3">
-          <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
+          <span className="ui-mono-label text-accent">
             {step ?? "hop"}
           </span>
           <span className="route-node" />
         </div>
 
         <div className="min-w-0">
-          <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-foreground/90">
+          <p className="ui-mono-label text-foreground/90">
             {label}
           </p>
-          <p className="mt-1 font-mono text-[10px] tracking-[0.18em] text-muted/70">
+          <p className="ui-mono-meta mt-1 text-muted/70">
             {status ?? "route synchronized"}
           </p>
         </div>

@@ -36,14 +36,14 @@ export function WorkExamplesPreview() {
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-baseline gap-4">
-                    <span className="font-mono text-[11px] text-accent/40">
+                    <span className="ui-mono-meta text-accent/40">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <div>
                       <h3 className="font-heading text-lg font-semibold">
                         {example.title}
                       </h3>
-                      <p className="mt-0.5 font-mono text-[11px] text-muted/60">
+                      <p className="ui-mono-meta mt-0.5 text-muted/60">
                         {example.subtitle}
                       </p>
                     </div>
@@ -87,7 +87,7 @@ export function WorkExamplesPreview() {
         >
           <MagneticButton
             href="/work"
-            className="inline-flex items-center gap-2 border border-line px-6 py-3 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:border-accent hover:text-accent"
+            className="ui-mono-label inline-flex items-center gap-2 border border-line px-6 py-3 text-muted transition-colors hover:border-accent hover:text-accent"
           >
             View detailed breakdowns <ArrowRight size={14} />
           </MagneticButton>

@@ -31,10 +31,10 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         >
           <div className="flex h-16 items-center justify-between border-b border-line px-6">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+              <p className="ui-mono-label text-accent">
                 session active
               </p>
-              <p className="mt-1 font-mono text-[10px] tracking-[0.18em] text-muted">
+              <p className="ui-mono-meta mt-1 text-muted">
                 operator routing enabled
               </p>
             </div>
@@ -67,7 +67,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </nav>
 
           <div className="border-t border-line px-8 pb-8 pt-6">
-            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">
+            <p className="ui-mono-label text-muted">
               <span className="text-accent">cmd+k</span> for quick nav
             </p>
           </div>

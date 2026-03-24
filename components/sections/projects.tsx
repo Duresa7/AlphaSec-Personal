@@ -38,7 +38,7 @@ export function Projects() {
                     <h3 className="font-heading text-lg font-semibold">
                       {project.name}
                     </h3>
-                    <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.2em] text-muted/60">
+                    <p className="ui-mono-label mt-1 text-muted/60">
                       {project.period}
                     </p>
                   </div>
@@ -77,7 +77,7 @@ export function Projects() {
 
                 {project.diagramUrl && (
                   <div className="mt-6">
-                    <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-muted/50">
+                    <p className="ui-mono-label mb-3 text-muted/50">
                       {"// network diagram"}
                     </p>
                     <div className="overflow-hidden border border-line">
@@ -92,7 +92,7 @@ export function Projects() {
 
                 {project.videoUrl && (
                   <div className="mt-6">
-                    <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-muted/50">
+                    <p className="ui-mono-label mb-3 text-muted/50">
                       {"// demo"}
                     </p>
                     <div className="overflow-hidden border border-line">
@@ -113,7 +113,7 @@ export function Projects() {
                   <div className="mt-6">
                     <button
                       onClick={() => setHtopOpen(!htopOpen)}
-                      className="mb-3 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-muted/50 transition-colors hover:text-accent"
+                      className="ui-mono-label mb-3 flex items-center gap-2 text-muted/50 transition-colors hover:text-accent"
                     >
                       {"// live services"}
                       {htopOpen ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
