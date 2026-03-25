@@ -342,6 +342,19 @@ body {
   animation: boot-flicker 4s ease-in-out infinite;
 }
 
+/* ── Desktop Window Content ───────────────────────────── */
+
+.window-content-wrapper section {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.window-content-wrapper section > div {
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

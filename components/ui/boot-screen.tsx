@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import useSound from "use-sound";
 import { bootSequence, type BootLine } from "@/content/boot-sequence";
+import { useDesktop } from "@/components/desktop/desktop-context";
 
 
 function renderLine(line: BootLine, index: number) {
@@ -45,6 +46,7 @@ function renderLine(line: BootLine, index: number) {
 }
 
 export function BootScreen() {
+  const { setBootComplete } = useDesktop();
   const [isVisible, setIsVisible] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
   const [visibleLines, setVisibleLines] = useState(0);
@@ -75,6 +77,7 @@ export function BootScreen() {
 
     if (prefersReduced) {
       setIsVisible(false);
+      setBootComplete();
       return;
     }
 
@@ -84,6 +87,7 @@ export function BootScreen() {
     return () => {
       document.body.style.overflow = "";
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Line sequencer
@@ -91,7 +95,6 @@ export function BootScreen() {
     if (!isVisible || isExiting || isSkipping) return;
 
     if (visibleLines >= bootSequence.length) {
-      // Sequence complete — wait for user to press Enter
       setWaitingForEnter(true);
       return;
     }
@@ -140,6 +143,7 @@ export function BootScreen() {
       onExitComplete={() => {
         setIsVisible(false);
         setIsExiting(false);
+        setBootComplete();
       }}
     >
       {!isExiting && (

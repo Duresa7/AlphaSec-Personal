@@ -284,12 +284,12 @@ export const bootSequence: BootLine[] = [
   },
   { text: "", delay: 250, type: "blank" },
   {
-    text: "duresa@kadi:~$ ./portfolio --init",
+    text: "duresa@kadi:~$ startx --desktop",
     delay: 600,
     type: "accent",
   },
   {
-    text: "Loading interface...",
+    text: "Starting AlphaSec Desktop v3.1...",
     delay: 400,
     type: "info",
   },
