@@ -26,27 +26,18 @@ export function SectionDivider({
       viewport={{ once: true, margin: "-80px" }}
       className={`relative flex items-center gap-4 ${className}`}
     >
-      <div className="hidden h-px flex-1 bg-line/80 md:block" />
-      <div className="network-panel flex min-w-0 flex-1 items-center gap-4 px-4 py-3 md:flex-none md:min-w-[340px]">
-        <div className="flex items-center gap-3">
-          <span className="ui-mono-label text-accent">
-            {step ?? "hop"}
-          </span>
-          <span className="route-node" />
-        </div>
-
+      <div className="hidden h-px flex-1 bg-line md:block" />
+      <div className="flex min-w-0 flex-1 items-center gap-3 px-4 py-2.5 md:flex-none">
+        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent/10 text-[11px] font-semibold text-accent">
+          {step ?? "—"}
+        </span>
         <div className="min-w-0">
-          <p className="ui-mono-label text-foreground/90">
+          <p className="text-sm font-semibold text-foreground">
             {label}
           </p>
-          <p className="ui-mono-meta mt-1 text-muted/70">
-            {status ?? "route synchronized"}
-          </p>
         </div>
-
-        <div className={`route-track ml-auto hidden h-4 min-w-24 flex-1 md:block ${animate ? "" : "after:hidden"}`} />
       </div>
-      <div className="hidden h-px flex-1 bg-line/80 md:block" />
+      <div className="hidden h-px flex-1 bg-line md:block" />
     </motion.div>
   );
 }

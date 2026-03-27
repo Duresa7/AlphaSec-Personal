@@ -35,10 +35,10 @@ export function Projects() {
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="font-heading text-lg font-semibold">
+                    <h3 className="font-heading text-lg font-semibold text-foreground">
                       {project.name}
                     </h3>
-                    <p className="ui-mono-label mt-1 text-muted/60">
+                    <p className="text-xs text-muted mt-1">
                       {project.period}
                     </p>
                   </div>
@@ -61,15 +61,13 @@ export function Projects() {
                   ))}
                 </div>
 
-                <ul className="mt-5 max-w-2xl space-y-3">
+                <ul className="mt-4 max-w-2xl space-y-2.5">
                   {project.bullets.map((bullet, i) => (
                     <li
                       key={i}
-                      className="relative pl-5 text-sm leading-relaxed text-muted"
+                      className="relative pl-4 text-sm leading-relaxed text-foreground/75"
                     >
-                      <span className="absolute left-0 top-0 font-mono text-accent/40">
-                        &gt;
-                      </span>
+                      <span className="absolute left-0 top-[9px] h-1 w-1 rounded-full bg-accent/50" />
                       {bullet}
                     </li>
                   ))}
@@ -77,8 +75,8 @@ export function Projects() {
 
                 {project.diagramUrl && (
                   <div className="mt-6">
-                    <p className="ui-mono-label mb-3 text-muted/50">
-                      {"// network diagram"}
+                    <p className="text-xs font-medium mb-3 text-muted">
+                      Network diagram
                     </p>
                     <div className="overflow-hidden border border-line">
                       <iframe
@@ -92,8 +90,8 @@ export function Projects() {
 
                 {project.videoUrl && (
                   <div className="mt-6">
-                    <p className="ui-mono-label mb-3 text-muted/50">
-                      {"// demo"}
+                    <p className="text-xs font-medium mb-3 text-muted">
+                      Demo
                     </p>
                     <div className="overflow-hidden border border-line">
                       <video
@@ -113,16 +111,16 @@ export function Projects() {
                   <div className="mt-6">
                     <button
                       onClick={() => setHtopOpen(!htopOpen)}
-                      className="ui-mono-label mb-3 flex items-center gap-2 text-muted/50 transition-colors hover:text-accent"
+                      className="mb-3 flex items-center gap-2 text-xs font-medium text-muted/60 transition-colors hover:text-accent"
                     >
-                      {"// live services"}
+                      Live services
                       {htopOpen ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
                     </button>
                     {htopOpen && <HomelabHtop />}
                   </div>
                 )}
 
-                <div className="mt-6 route-track h-4" />
+                <div className="mt-6 h-px bg-line" />
               </TerminalPanel>
             </motion.div>
           ))}

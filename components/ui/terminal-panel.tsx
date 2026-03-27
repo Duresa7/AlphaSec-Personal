@@ -25,25 +25,18 @@ export function TerminalPanel({
   return (
     <div className={cn("network-panel", className)}>
       {chrome && (
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line/80 px-4 py-3">
-          <div className="flex min-w-0 items-center gap-3">
-            <div className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-full border border-line/70 bg-background/90" />
-              <span className="h-2.5 w-2.5 rounded-full border border-line/70 bg-background/90" />
-              <span className="h-2.5 w-2.5 rounded-full border border-line/70 bg-background/90" />
-            </div>
-            <div className="min-w-0">
-              {title && (
-                <p className="ui-mono-label truncate text-foreground/86">
-                  {title}
-                </p>
-              )}
-              {subtitle && (
-                <p className="ui-mono-meta truncate text-muted/70">
-                  {subtitle}
-                </p>
-              )}
-            </div>
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-4 py-2.5">
+          <div className="min-w-0">
+            {title && (
+              <p className="text-xs font-medium truncate text-foreground/80">
+                {title}
+              </p>
+            )}
+            {subtitle && (
+              <p className="text-[11px] truncate text-muted/60 mt-0.5">
+                {subtitle}
+              </p>
+            )}
           </div>
           {status && <StatusPill status="active">{status}</StatusPill>}
         </div>

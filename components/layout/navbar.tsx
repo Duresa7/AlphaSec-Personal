@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { MobileMenu } from "@/components/layout/mobile-menu";
 import { navItems } from "@/content/site";
 import { useActiveSection } from "@/hooks/use-active-section";
@@ -65,7 +64,6 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <ThemeToggle />
             <button
               onClick={() => setMobileOpen(true)}
               className="flex h-9 w-9 items-center justify-center border border-line text-muted transition-colors hover:border-accent hover:text-accent md:hidden"

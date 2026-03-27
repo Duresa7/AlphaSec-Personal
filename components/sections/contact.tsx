@@ -33,26 +33,13 @@ export function Contact() {
             className="mt-14"
           >
             <div className="px-6 py-8 text-center md:px-10">
-              <p className="font-mono text-sm text-accent">
-                <span className="text-muted">&gt; </span>
-                echo &quot;let&apos;s connect&quot;
-              </p>
-
-              <h2 className="mt-6 font-heading text-3xl font-semibold tracking-tight md:text-4xl">
+              <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
                 Let&apos;s connect
               </h2>
 
-              <p className="ui-copy-support mx-auto mt-4 max-w-md text-muted">
+              <p className="mx-auto mt-4 max-w-md text-base text-foreground/60 leading-relaxed">
                 Currently seeking any IT opportunities. Feel free to reach out.
               </p>
-
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                {primaryContactLinks.map((link, index) => (
-                  <StatusPill key={link.key} status={index === 0 ? "active" : undefined}>
-                    {link.key}
-                  </StatusPill>
-                ))}
-              </div>
 
               <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
                 {primaryContactLinks.map((link) => {
@@ -65,10 +52,10 @@ export function Contact() {
                       href={link.href}
                       target={isExternal ? "_blank" : undefined}
                       rel={isExternal ? "noopener noreferrer" : undefined}
-                      className="ui-mono-label inline-flex items-center gap-2 border border-line px-6 py-3 text-muted transition-colors hover:border-accent hover:text-accent"
+                      className="inline-flex items-center gap-2 rounded-lg border border-line px-6 py-3 text-sm font-medium text-foreground/80 transition-colors hover:border-accent hover:text-accent"
                     >
-                      <Icon size={14} />
-                      {`endpoint://${link.key}`}
+                      <Icon size={15} />
+                      {link.key}
                     </MagneticButton>
                   );
                 })}
@@ -81,9 +68,9 @@ export function Contact() {
         <div className="mt-6 flex justify-center">
           <button
             onClick={() => setShowExtras(!showExtras)}
-            className="ui-mono-label flex items-center gap-2 text-muted/50 transition-colors hover:text-accent"
+            className="flex items-center gap-2 text-xs font-medium text-muted/60 transition-colors hover:text-accent"
           >
-            {"// dns records & schedule"}
+            DNS records &amp; schedule
             {showExtras ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
           </button>
         </div>

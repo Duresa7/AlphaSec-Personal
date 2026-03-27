@@ -22,27 +22,26 @@ export function Skills() {
         <SectionDivider label="skills" step="05" status="module inventory" />
 
         {/* View toggle */}
-        <div className="ui-mono-meta mt-8 flex items-center gap-3">
-          <span className="text-muted/40">view:</span>
+        <div className="mt-8 flex items-center gap-2">
           <button
             onClick={() => setView("list")}
-            className={`ui-mono-label border px-3 py-1.5 transition-colors ${
+            className={`rounded-full border px-4 py-1.5 text-xs font-medium transition-colors ${
               view === "list"
-                ? "border-accent/40 text-accent bg-accent-dim/30"
-                : "border-line text-muted hover:border-accent/20 hover:text-foreground"
+                ? "border-accent bg-accent text-white"
+                : "border-line text-muted hover:border-foreground/30 hover:text-foreground"
             }`}
           >
-            ls
+            List
           </button>
           <button
             onClick={() => setView("scan")}
-            className={`ui-mono-label border px-3 py-1.5 transition-colors ${
+            className={`rounded-full border px-4 py-1.5 text-xs font-medium transition-colors ${
               view === "scan"
-                ? "border-accent/40 text-accent bg-accent-dim/30"
-                : "border-line text-muted hover:border-accent/20 hover:text-foreground"
+                ? "border-accent bg-accent text-white"
+                : "border-line text-muted hover:border-foreground/30 hover:text-foreground"
             }`}
           >
-            nmap
+            Scan
           </button>
         </div>
 
@@ -56,33 +55,25 @@ export function Skills() {
           >
             {skills.map((category) => (
               <motion.div key={category.label} variants={fadeInUp}>
-                <TerminalPanel
-                  title={`~/${slugify(category.label)}`}
-                  subtitle="ls --modules"
-                  status="mounted"
-                  chrome={false}
-                  bodyClassName="p-5"
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <p className="ui-mono-meta text-muted">
-                      <span className="text-accent">~/{slugify(category.label)}</span>
-                      <span className="text-muted/40"> $ </span>
-                      <span className="text-muted/60">ls</span>
-                    </p>
-                    <StatusPill>loaded</StatusPill>
+                <div className="network-panel p-5">
+                  <div className="flex items-center justify-between gap-4 mb-4">
+                    <h3 className="text-sm font-semibold text-foreground">
+                      {category.label}
+                    </h3>
+                    <StatusPill>{category.items.length} skills</StatusPill>
                   </div>
 
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {category.items.map((item) => (
                       <span
                         key={item}
-                        className="ui-mono-chip border border-line bg-background/55 px-3 py-1.5 text-muted transition-all hover:border-accent/50 hover:text-foreground"
+                        className="rounded-md border border-line bg-background/70 px-3 py-1.5 text-[13px] text-foreground/80 transition-all hover:border-accent/40 hover:bg-accent/[0.04] hover:text-foreground"
                       >
                         {item}
                       </span>
                     ))}
                   </div>
-                </TerminalPanel>
+                </div>
               </motion.div>
             ))}
           </motion.div>

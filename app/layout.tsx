@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
 import { Outfit, IBM_Plex_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/layout/theme-provider";
-import { SmoothScroll } from "@/components/layout/smooth-scroll";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
-
-import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { CommandPalette } from "@/components/ui/command-palette";
-import { FloatingSocials } from "@/components/ui/floating-socials";
-import { ScrollDownIndicator } from "@/components/ui/scroll-down-indicator";
+import { DesktopProvider } from "@/components/desktop/desktop-context";
+import { BootScreen } from "@/components/ui/boot-screen";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -41,15 +35,10 @@ export default function RootLayout({
         className={`${outfit.variable} ${ibmPlexMono.variable} bg-background text-foreground antialiased`}
       >
         <ThemeProvider>
-          <SmoothScroll>
-            <ScrollProgress />
-            <Navbar />
-            <main className="relative z-10">{children}</main>
-            <Footer />
-            <CommandPalette />
-            <FloatingSocials />
-            <ScrollDownIndicator />
-          </SmoothScroll>
+          <DesktopProvider>
+            <BootScreen />
+            {children}
+          </DesktopProvider>
         </ThemeProvider>
       </body>
     </html>
