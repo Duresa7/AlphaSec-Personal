@@ -15,6 +15,8 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { siteProfile } from "./site";
 
+export const desktopWallpaperSrc = "/wallpaper.png";
+
 export type WindowId =
   | "dossier"
   | "comms"
@@ -27,13 +29,15 @@ export type WindowId =
   | "terminal"
   | "file-manager";
 
+export type DesktopIconSide = "left" | "right";
+
 export interface DesktopIconConfig {
   id: string;
   label: string;
   icon: LucideIcon;
   windowId?: WindowId;
   externalHref?: string;
-  side?: "left" | "right";
+  side?: DesktopIconSide;
 }
 
 export interface WindowConfig {
@@ -87,6 +91,10 @@ export const desktopIcons: DesktopIconConfig[] = [
     side: "right",
   },
 ];
+
+export function shouldOpenWindowMaximized(config: WindowConfig) {
+  return config.openMaximized ?? true;
+}
 
 export const windowConfigs: Record<WindowId, WindowConfig> = {
   dossier: {

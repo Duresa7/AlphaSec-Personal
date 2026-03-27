@@ -5,6 +5,7 @@ import { Search } from "lucide-react";
 import { useDesktop } from "./desktop-context";
 import { desktopIcons } from "@/content/desktop";
 import { siteProfile } from "@/content/site";
+import { activateDesktopIcon } from "./icon-actions";
 
 interface StartMenuProps {
   isOpen: boolean;
@@ -56,16 +57,9 @@ export function StartMenu({ isOpen, onClose }: StartMenuProps) {
                   return (
                     <button
                       key={item.id}
+                      type="button"
                       onClick={() => {
-                        if (item.externalHref) {
-                          window.open(
-                            item.externalHref,
-                            "_blank",
-                            "noopener,noreferrer"
-                          );
-                        } else if (item.windowId) {
-                          openWindow(item.windowId);
-                        }
+                        activateDesktopIcon(item, openWindow);
                         onClose();
                       }}
                       className="flex flex-col items-center gap-1.5 rounded-lg p-3 transition-colors hover:bg-black/[0.05]"
@@ -89,7 +83,10 @@ export function StartMenu({ isOpen, onClose }: StartMenuProps) {
             <div className="flex items-center gap-3 px-5 py-3">
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 text-accent">
                 <span className="text-xs font-bold">
-                  {siteProfile.name.split(" ").map(n => n[0]).join("")}
+                  {siteProfile.name
+                    .split(" ")
+                    .map((namePart) => namePart[0])
+                    .join("")}
                 </span>
               </div>
               <div className="min-w-0">

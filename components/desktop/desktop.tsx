@@ -3,7 +3,13 @@
 import { useState } from "react";
 
 import { motion } from "framer-motion";
-import { desktopIcons, type WindowId } from "@/content/desktop";
+import {
+  desktopIcons,
+  desktopWallpaperSrc,
+  type DesktopIconConfig,
+  type DesktopIconSide,
+  type WindowId,
+} from "@/content/desktop";
 import { useDesktop } from "./desktop-context";
 import { DesktopIcon } from "./desktop-icon";
 import { DesktopWindow } from "./window";
@@ -11,6 +17,28 @@ import { WindowContent } from "./window-content";
 import { Taskbar } from "./taskbar";
 import { StartMenu } from "./start-menu";
 import { ContextMenu, useContextMenu } from "./context-menu";
+
+const desktopIconColumns: DesktopIconSide[] = ["left", "right"];
+
+const desktopIconColumnClassNames: Record<DesktopIconSide, string> = {
+  left: "absolute top-4 left-4 flex h-[calc(100%-60px)] flex-col flex-wrap content-start gap-1 md:top-6 md:left-6",
+  right:
+    "absolute top-4 right-4 flex h-[calc(100%-60px)] flex-col flex-wrap content-end gap-1 md:top-6 md:right-6",
+};
+
+function groupDesktopIconsBySide(
+  icons: DesktopIconConfig[]
+): Record<DesktopIconSide, DesktopIconConfig[]> {
+  return icons.reduce<Record<DesktopIconSide, DesktopIconConfig[]>>(
+    (groupedIcons, icon) => {
+      groupedIcons[icon.side ?? "left"].push(icon);
+      return groupedIcons;
+    },
+    { left: [], right: [] }
+  );
+}
+
+const desktopIconsBySide = groupDesktopIconsBySide(desktopIcons);
 
 export function Desktop() {
   const { state } = useDesktop();
@@ -34,7 +62,7 @@ export function Desktop() {
       {/* ── Wallpaper background ───────────────────── */}
       <div className="absolute inset-0 pointer-events-none">
         <img
-          src="/wallpaper.png"
+          src={desktopWallpaperSrc}
           alt=""
           className="h-full w-full object-cover"
         />
@@ -42,22 +70,13 @@ export function Desktop() {
 
       {/* ── Desktop icons ──────────────────────────── */}
       <div className="absolute inset-0 bottom-14 overflow-hidden p-4 md:p-6">
-        {/* Left-side icons */}
-        <div className="absolute top-4 left-4 md:top-6 md:left-6 flex flex-col flex-wrap content-start gap-1 h-[calc(100%-60px)]">
-          {desktopIcons
-            .filter((icon) => icon.side !== "right")
-            .map((icon, i) => (
+        {desktopIconColumns.map((side) => (
+          <div key={side} className={desktopIconColumnClassNames[side]}>
+            {desktopIconsBySide[side].map((icon, i) => (
               <DesktopIcon key={icon.id} config={icon} index={i} />
             ))}
-        </div>
-        {/* Right-side icons */}
-        <div className="absolute top-4 right-4 md:top-6 md:right-6 flex flex-col flex-wrap content-end gap-1 h-[calc(100%-60px)]">
-          {desktopIcons
-            .filter((icon) => icon.side === "right")
-            .map((icon, i) => (
-              <DesktopIcon key={icon.id} config={icon} index={i} />
-            ))}
-        </div>
+          </div>
+        ))}
       </div>
 
       {/* ── Windows ────────────────────────────────── */}

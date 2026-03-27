@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useDesktop } from "./desktop-context";
 import type { DesktopIconConfig } from "@/content/desktop";
+import { activateDesktopIcon } from "./icon-actions";
 
 interface DesktopIconProps {
   config: DesktopIconConfig;
@@ -13,23 +14,21 @@ interface DesktopIconProps {
 export function DesktopIcon({ config, index }: DesktopIconProps) {
   const { openWindow } = useDesktop();
   const Icon = config.icon;
+  const ariaLabel = config.externalHref
+    ? `${config.label} (opens in a new tab)`
+    : config.label;
 
-  const handleClick = () => {
-    if (config.externalHref) {
-      window.open(config.externalHref, "_blank", "noopener,noreferrer");
-      return;
-    }
-    if (config.windowId) {
-      openWindow(config.windowId);
-    }
-  };
+  const handleClick = () => activateDesktopIcon(config, openWindow);
 
   return (
     <motion.button
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.1 + index * 0.05, duration: 0.3 }}
+      type="button"
       onClick={handleClick}
+      aria-label={ariaLabel}
+      title={ariaLabel}
       className={cn(
         "group flex w-[110px] flex-col items-center gap-2 rounded-lg p-3",
         "transition-all duration-150",

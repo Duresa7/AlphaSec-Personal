@@ -7,7 +7,11 @@ import {
   useCallback,
   type ReactNode,
 } from "react";
-import { type WindowId, windowConfigs } from "@/content/desktop";
+import {
+  shouldOpenWindowMaximized,
+  type WindowId,
+  windowConfigs,
+} from "@/content/desktop";
 
 /* ── State shape ─────────────────────────────────────── */
 
@@ -108,7 +112,7 @@ function desktopReducer(
             ...win,
             isOpen: true,
             isMinimized: false,
-            isMaximized: config.openMaximized !== false,
+            isMaximized: shouldOpenWindowMaximized(config),
             position: pos,
             size: win.isOpen ? win.size : { ...config.defaultSize },
             zIndex: nextZ,

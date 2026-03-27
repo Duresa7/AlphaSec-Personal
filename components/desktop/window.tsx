@@ -328,7 +328,7 @@ export function DesktopWindow({ id, children }: DesktopWindowProps) {
           </div>
 
           {/* ── Window Body ───────────────────────────── */}
-          <div className="relative flex-1 overflow-y-auto overflow-x-hidden" style={{ background: '#e0e0e0' }}>
+          <div className="relative flex-1 overflow-x-hidden overflow-y-auto bg-surface-elevated">
             {children}
           </div>
 
