@@ -31,23 +31,23 @@ export function DesktopIcon({ config, index }: DesktopIconProps) {
       transition={{ delay: 0.1 + index * 0.05, duration: 0.3 }}
       onClick={handleClick}
       className={cn(
-        "group flex w-[88px] flex-col items-center gap-1.5 rounded-lg p-2.5",
-        "transition-all duration-200",
-        "hover:bg-accent-dim/40",
-        "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent/50"
+        "group flex w-[110px] flex-col items-center gap-2 rounded-lg p-3",
+        "transition-all duration-150",
+        "hover:bg-white/15",
+        "active:scale-[0.97]",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
       )}
     >
       <div
-        className={cn(
-          "flex h-12 w-12 items-center justify-center rounded-lg border border-line/60 bg-surface/80",
-          "transition-all duration-200",
-          "group-hover:border-accent/40 group-hover:shadow-[0_0_16px_rgba(0,232,122,0.15)]",
-          "group-active:scale-95"
-        )}
+        className="flex h-16 w-16 items-center justify-center"
+        style={{ filter: "drop-shadow(0 1px 4px rgba(0,0,0,0.45))" }}
       >
-        <Icon className="h-5.5 w-5.5 text-muted transition-colors group-hover:text-accent" />
+        <Icon className="h-11 w-11 text-white" />
       </div>
-      <span className="ui-mono-label text-center text-[10px] leading-tight text-muted/80 transition-colors group-hover:text-foreground">
+      <span
+        className="text-center text-sm font-medium leading-tight text-white max-w-full"
+        style={{ textShadow: "0 1px 3px rgba(0,0,0,0.6), 0 0 6px rgba(0,0,0,0.3)" }}
+      >
         {config.label}
       </span>
     </motion.button>

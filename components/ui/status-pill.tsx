@@ -10,11 +10,11 @@ interface StatusPillProps {
 
 const statusStyles = {
   default:
-    "border-line/80 text-muted bg-background/55",
+    "border-line text-muted bg-background/60",
   active:
-    "border-accent/35 text-accent bg-accent-dim/70",
+    "border-accent/25 text-accent bg-accent/[0.06]",
   warning:
-    "border-warning/40 text-warning bg-warning/10",
+    "border-warning/30 text-warning bg-warning/[0.06]",
 };
 
 export function StatusPill({
@@ -25,12 +25,12 @@ export function StatusPill({
   return (
     <span
       className={cn(
-        "ui-mono-label inline-flex items-center gap-2 border px-2.5 py-1",
+        "ui-mono-label inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px]",
         statusStyles[status],
         className
       )}
     >
-      <span className="h-1.5 w-1.5 bg-current" />
+      <span className="h-1.5 w-1.5 rounded-full bg-current" />
       {children}
     </span>
   );

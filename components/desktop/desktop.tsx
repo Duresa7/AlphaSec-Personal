@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { motion } from "framer-motion";
 import { desktopIcons, type WindowId } from "@/content/desktop";
 import { useDesktop } from "./desktop-context";
@@ -31,14 +32,31 @@ export function Desktop() {
       onContextMenu={onContextMenu}
     >
       {/* ── Wallpaper background ───────────────────── */}
-      <div className="absolute inset-0 hero-radar" />
+      <div className="absolute inset-0 pointer-events-none">
+        <img
+          src="/wallpaper.png"
+          alt=""
+          className="h-full w-full object-cover"
+        />
+      </div>
 
       {/* ── Desktop icons ──────────────────────────── */}
-      <div className="absolute inset-0 bottom-12 overflow-hidden p-4 md:p-6">
-        <div className="flex flex-col flex-wrap content-start gap-1 h-full">
-          {desktopIcons.map((icon, i) => (
-            <DesktopIcon key={icon.id} config={icon} index={i} />
-          ))}
+      <div className="absolute inset-0 bottom-14 overflow-hidden p-4 md:p-6">
+        {/* Left-side icons */}
+        <div className="absolute top-4 left-4 md:top-6 md:left-6 flex flex-col flex-wrap content-start gap-1 h-[calc(100%-60px)]">
+          {desktopIcons
+            .filter((icon) => icon.side !== "right")
+            .map((icon, i) => (
+              <DesktopIcon key={icon.id} config={icon} index={i} />
+            ))}
+        </div>
+        {/* Right-side icons */}
+        <div className="absolute top-4 right-4 md:top-6 md:right-6 flex flex-col flex-wrap content-end gap-1 h-[calc(100%-60px)]">
+          {desktopIcons
+            .filter((icon) => icon.side === "right")
+            .map((icon, i) => (
+              <DesktopIcon key={icon.id} config={icon} index={i} />
+            ))}
         </div>
       </div>
 

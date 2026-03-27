@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect, useSyncExternalStore } from "react";
-import { Wifi, Sun, Moon } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Wifi, Volume2 } from "lucide-react";
 
 const subscribe = () => () => {};
 function useMounted() {
@@ -11,65 +10,55 @@ function useMounted() {
 
 export function SystemTray() {
   const [time, setTime] = useState("");
-  const [uptime, setUptime] = useState(0);
+  const [date, setDate] = useState("");
   const mounted = useMounted();
-  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const tick = () => {
       const now = new Date();
       setTime(
         now.toLocaleTimeString("en-US", {
-          hour12: false,
-          hour: "2-digit",
+          hour12: true,
+          hour: "numeric",
           minute: "2-digit",
-          second: "2-digit",
         })
       );
-      setUptime((prev) => prev + 1);
+      setDate(
+        now.toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        })
+      );
     };
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
   }, []);
 
-  const formatUptime = (s: number) => {
-    const h = Math.floor(s / 3600);
-    const m = Math.floor((s % 3600) / 60);
-    const sec = s % 60;
-    return `${h}:${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
-  };
+  if (!mounted) return null;
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-2.5">
       {/* Network indicator */}
-      <div className="hidden items-center gap-1.5 sm:flex">
-        <Wifi className="h-3 w-3 text-accent" />
-        <span className="ui-mono-label text-[10px] text-muted/70">eth0</span>
+      <div className="flex h-9 w-9 items-center justify-center rounded-md hover:bg-black/[0.06] transition-colors">
+        <Wifi className="h-4.5 w-4.5 text-foreground/60" />
       </div>
 
-      {/* Uptime */}
-      <span className="ui-mono-label hidden text-[10px] text-muted/60 md:block">
-        up {formatUptime(uptime)}
-      </span>
+      {/* Volume */}
+      <div className="hidden sm:flex h-9 w-9 items-center justify-center rounded-md hover:bg-black/[0.06] transition-colors">
+        <Volume2 className="h-4.5 w-4.5 text-foreground/60" />
+      </div>
 
-      {/* Theme toggle */}
-      <button
-        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        className="flex h-6 w-6 items-center justify-center rounded transition-colors hover:bg-accent-dim/40"
-        aria-label="Toggle theme"
-      >
-        {mounted && theme === "dark" ? (
-          <Sun className="h-3 w-3 text-muted" />
-        ) : (
-          <Moon className="h-3 w-3 text-muted" />
-        )}
-      </button>
-
-      {/* Clock */}
-      <span className="ui-mono-label min-w-[62px] text-right text-[11px] text-foreground/80">
-        {time}
-      </span>
+      {/* Clock + Date */}
+      <div className="flex flex-col items-end rounded-md px-2.5 py-1.5 hover:bg-black/[0.06] transition-colors cursor-default">
+        <span className="text-[13px] font-medium leading-tight text-foreground/80">
+          {time}
+        </span>
+        <span className="text-[11px] leading-tight text-foreground/50">
+          {date}
+        </span>
+      </div>
     </div>
   );
 }

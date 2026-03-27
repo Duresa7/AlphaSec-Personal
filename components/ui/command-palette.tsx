@@ -3,14 +3,12 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Command } from "cmdk";
-import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
 import { navItems, primaryContactLinks, siteProfile } from "@/content/site";
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [easterEgg, setEasterEgg] = useState(false);
-  const { resolvedTheme, setTheme } = useTheme();
   const router = useRouter();
   const sections = navItems.map((item) => ({
     href: item.href,
@@ -134,17 +132,6 @@ export function CommandPalette() {
                       </span>
                     }
                   >
-                    <Command.Item
-                      value="toggle theme dark light"
-                      onSelect={() => {
-                        setTheme(resolvedTheme === "dark" ? "light" : "dark");
-                        setOpen(false);
-                      }}
-                      className="ui-mono-meta flex cursor-pointer items-center gap-3 px-3 py-2 text-muted transition-colors data-[selected=true]:bg-accent-dim data-[selected=true]:text-foreground"
-                    >
-                      <span className="text-accent/60">$</span>
-                      theme --toggle
-                    </Command.Item>
                     <Command.Item
                       value="copy email duresakadi"
                       onSelect={copyEmail}

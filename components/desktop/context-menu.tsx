@@ -2,8 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Terminal, FolderOpen, Sun, Moon, Info } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Terminal, FolderOpen, Info } from "lucide-react";
 import { useDesktop } from "./desktop-context";
 
 interface MenuPosition {
@@ -31,13 +30,12 @@ interface ContextMenuProps {
 
 export function ContextMenu({ position, onClose }: ContextMenuProps) {
   const { openWindow } = useDesktop();
-  const { theme, setTheme } = useTheme();
 
   if (!position) return null;
 
   // Keep menu within viewport
   const menuW = 200;
-  const menuH = 170;
+  const menuH = 140;
   const x = Math.min(position.x, window.innerWidth - menuW - 8);
   const y = Math.min(position.y, window.innerHeight - menuH - 56);
 
@@ -54,15 +52,9 @@ export function ContextMenu({ position, onClose }: ContextMenuProps) {
     },
     { divider: true },
     {
-      label: theme === "dark" ? "Light Mode" : "Dark Mode",
-      icon: theme === "dark" ? Sun : Moon,
-      action: () => setTheme(theme === "dark" ? "light" : "dark"),
-    },
-    {
       label: "About System",
       icon: Info,
       action: () => {
-        /* opens a small alert-like info */
         openWindow("terminal");
       },
     },
@@ -72,6 +64,7 @@ export function ContextMenu({ position, onClose }: ContextMenuProps) {
     <AnimatePresence>
       {/* Backdrop */}
       <motion.div
+        key="ctx-backdrop"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -85,16 +78,17 @@ export function ContextMenu({ position, onClose }: ContextMenuProps) {
 
       {/* Menu */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.92 }}
+        key="ctx-menu"
+        initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.95 }}
-        transition={{ duration: 0.12 }}
-        className="fixed z-[71] min-w-[180px] overflow-hidden border border-line/80 bg-surface/98 py-1 shadow-xl backdrop-blur-lg"
+        exit={{ opacity: 0, scale: 0.97 }}
+        transition={{ duration: 0.1 }}
+        className="fixed z-[71] min-w-[200px] overflow-hidden rounded-lg border border-black/[0.08] bg-white/85 py-1 shadow-xl shadow-black/10 backdrop-blur-xl"
         style={{ top: y, left: x }}
       >
         {items.map((item, i) =>
           "divider" in item ? (
-            <div key={i} className="my-1 h-px bg-line/50" />
+            <div key={i} className="my-1 h-px bg-black/[0.06] mx-2" />
           ) : (
             <button
               key={i}
@@ -102,10 +96,11 @@ export function ContextMenu({ position, onClose }: ContextMenuProps) {
                 item.action();
                 onClose();
               }}
-              className="flex w-full items-center gap-2.5 px-3 py-1.5 text-left transition-colors hover:bg-accent-dim/30"
+              className="flex w-full items-center gap-2.5 px-3 py-1.5 text-left transition-colors hover:bg-black/[0.05] rounded-[4px] mx-0.5"
+              style={{ width: "calc(100% - 4px)" }}
             >
-              <item.icon className="h-3.5 w-3.5 text-muted" />
-              <span className="ui-mono-meta text-foreground/85">
+              <item.icon className="h-4 w-4 text-foreground/50" />
+              <span className="text-sm text-foreground/85">
                 {item.label}
               </span>
             </button>

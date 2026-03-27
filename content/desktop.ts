@@ -33,6 +33,7 @@ export interface DesktopIconConfig {
   icon: LucideIcon;
   windowId?: WindowId;
   externalHref?: string;
+  side?: "left" | "right";
 }
 
 export interface WindowConfig {
@@ -41,96 +42,105 @@ export interface WindowConfig {
   icon: LucideIcon;
   defaultSize: { width: number; height: number };
   minSize: { width: number; height: number };
+  openMaximized?: boolean;
 }
 
 export const desktopIcons: DesktopIconConfig[] = [
-  { id: "dossier", label: "dossier", icon: User, windowId: "dossier" },
-  { id: "comms", label: "comms", icon: MessageSquare, windowId: "comms" },
-  { id: "ops-log", label: "ops-log", icon: Briefcase, windowId: "ops-log" },
-  { id: "certs", label: "certs", icon: GraduationCap, windowId: "certs" },
-  { id: "modules", label: "modules", icon: Cpu, windowId: "modules" },
-  { id: "builds", label: "builds", icon: FolderGit2, windowId: "builds" },
+  { id: "dossier", label: "about-me", icon: User, windowId: "dossier" },
+  { id: "comms", label: "testimonials", icon: MessageSquare, windowId: "comms" },
+  { id: "ops-log", label: "experience", icon: Briefcase, windowId: "ops-log" },
+  { id: "certs", label: "education", icon: GraduationCap, windowId: "certs" },
+  { id: "modules", label: "skills", icon: Cpu, windowId: "modules" },
+  { id: "builds", label: "projects", icon: FolderGit2, windowId: "builds" },
   {
     id: "case-files",
-    label: "case-files",
+    label: "work-samples",
     icon: FileText,
     windowId: "case-files",
   },
-  { id: "secure-ch", label: "secure-ch", icon: Mail, windowId: "secure-ch" },
   { id: "terminal", label: "terminal", icon: Terminal, windowId: "terminal" },
   {
     id: "file-manager",
-    label: "ranger",
+    label: "files",
     icon: FolderOpen,
     windowId: "file-manager",
+  },
+  {
+    id: "secure-ch",
+    label: "contact",
+    icon: Mail,
+    windowId: "secure-ch",
+    side: "right",
   },
   {
     id: "github",
     label: "github",
     icon: Github,
     externalHref: siteProfile.githubUrl,
+    side: "right",
   },
   {
     id: "linkedin",
     label: "linkedin",
     icon: Linkedin,
     externalHref: siteProfile.linkedInUrl,
+    side: "right",
   },
 ];
 
 export const windowConfigs: Record<WindowId, WindowConfig> = {
   dossier: {
     id: "dossier",
-    title: "operator-dossier.sh",
+    title: "about-me",
     icon: User,
     defaultSize: { width: 720, height: 560 },
     minSize: { width: 400, height: 300 },
   },
   comms: {
     id: "comms",
-    title: "trusted-channels.log",
+    title: "testimonials",
     icon: MessageSquare,
     defaultSize: { width: 680, height: 500 },
     minSize: { width: 380, height: 280 },
   },
   "ops-log": {
     id: "ops-log",
-    title: "systemctl --history",
+    title: "experience",
     icon: Briefcase,
     defaultSize: { width: 760, height: 580 },
     minSize: { width: 420, height: 320 },
   },
   certs: {
     id: "certs",
-    title: "credential-store",
+    title: "education",
     icon: GraduationCap,
     defaultSize: { width: 720, height: 540 },
     minSize: { width: 400, height: 300 },
   },
   modules: {
     id: "modules",
-    title: "nmap --inventory",
+    title: "skills",
     icon: Cpu,
     defaultSize: { width: 740, height: 560 },
     minSize: { width: 420, height: 320 },
   },
   builds: {
     id: "builds",
-    title: "docker-compose.yml",
+    title: "projects",
     icon: FolderGit2,
     defaultSize: { width: 780, height: 600 },
     minSize: { width: 440, height: 340 },
   },
   "case-files": {
     id: "case-files",
-    title: "case-files/",
+    title: "work-samples",
     icon: FileText,
     defaultSize: { width: 780, height: 600 },
     minSize: { width: 440, height: 340 },
   },
   "secure-ch": {
     id: "secure-ch",
-    title: "netcat --connect",
+    title: "contact",
     icon: Mail,
     defaultSize: { width: 680, height: 500 },
     minSize: { width: 380, height: 280 },
@@ -141,19 +151,20 @@ export const windowConfigs: Record<WindowId, WindowConfig> = {
     icon: Terminal,
     defaultSize: { width: 700, height: 460 },
     minSize: { width: 380, height: 260 },
+    openMaximized: false,
   },
   "file-manager": {
     id: "file-manager",
-    title: "ranger",
+    title: "files",
     icon: FolderOpen,
     defaultSize: { width: 600, height: 480 },
     minSize: { width: 340, height: 280 },
+    openMaximized: false,
   },
 };
 
 export const contextMenuItems = [
   { label: "Open Terminal", windowId: "terminal" as WindowId },
   { label: "Open File Manager", windowId: "file-manager" as WindowId },
-  { label: "Toggle Theme", action: "toggle-theme" as const },
   { label: "About System", action: "about" as const },
 ];

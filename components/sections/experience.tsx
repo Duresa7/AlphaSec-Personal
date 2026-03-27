@@ -17,27 +17,26 @@ export function Experience() {
         <SectionDivider label="experience" step="03" status="ops timeline" />
 
         {/* View toggle */}
-        <div className="ui-mono-meta mt-8 flex items-center gap-3">
-          <span className="text-muted/40">view:</span>
+        <div className="mt-8 flex items-center gap-2">
           <button
             onClick={() => setView("timeline")}
-            className={`ui-mono-label border px-3 py-1.5 transition-colors ${
+            className={`rounded-full border px-4 py-1.5 text-xs font-medium transition-colors ${
               view === "timeline"
-                ? "border-accent/40 text-accent bg-accent-dim/30"
-                : "border-line text-muted hover:border-accent/20 hover:text-foreground"
+                ? "border-accent bg-accent text-white"
+                : "border-line text-muted hover:border-foreground/30 hover:text-foreground"
             }`}
           >
-            timeline
+            Timeline
           </button>
           <button
             onClick={() => setView("systemctl")}
-            className={`ui-mono-label border px-3 py-1.5 transition-colors ${
+            className={`rounded-full border px-4 py-1.5 text-xs font-medium transition-colors ${
               view === "systemctl"
-                ? "border-accent/40 text-accent bg-accent-dim/30"
-                : "border-line text-muted hover:border-accent/20 hover:text-foreground"
+                ? "border-accent bg-accent text-white"
+                : "border-line text-muted hover:border-foreground/30 hover:text-foreground"
             }`}
           >
-            systemctl
+            Detail
           </button>
         </div>
 
@@ -62,10 +61,10 @@ export function Experience() {
 
                   <div className="grid gap-5 lg:grid-cols-[220px_1fr]">
                   <div>
-                    <p className="ui-mono-label text-accent">
+                    <p className="text-xs font-semibold text-accent">
                       {job.period}
                     </p>
-                    <p className="ui-mono-meta mt-2 text-muted/70">
+                    <p className="text-xs text-muted mt-1.5">
                       {job.location}
                     </p>
                   </div>
@@ -73,29 +72,27 @@ export function Experience() {
                   <div className="network-panel p-5 md:p-6">
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div>
-                        <h3 className="font-heading text-lg font-semibold">
+                        <h3 className="font-heading text-lg font-semibold text-foreground">
                           {job.role}
                         </h3>
-                        <p className="mt-1 font-mono text-sm text-muted">
+                        <p className="mt-1 text-sm text-muted">
                           {job.company}
                         </p>
                       </div>
                       <StatusPill status="active">
-                        node {String(index + 1).padStart(2, "0")}
+                        {String(index + 1).padStart(2, "0")}
                       </StatusPill>
                     </div>
 
-                    <div className="mt-5 route-track h-4" />
+                    <div className="mt-4 h-px bg-line" />
 
-                    <ul className="mt-5 max-w-2xl space-y-3">
+                    <ul className="mt-4 max-w-2xl space-y-2.5">
                       {job.bullets.map((bullet, i) => (
                         <li
                           key={i}
-                          className="relative pl-5 text-sm leading-relaxed text-muted"
+                          className="relative pl-4 text-sm leading-relaxed text-foreground/75"
                         >
-                          <span className="absolute left-0 top-0 font-mono text-accent/50">
-                            &gt;
-                          </span>
+                          <span className="absolute left-0 top-[9px] h-1 w-1 rounded-full bg-accent/50" />
                           {bullet}
                         </li>
                       ))}

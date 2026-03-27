@@ -1,6 +1,6 @@
 "use client";
 
-import { Shield } from "lucide-react";
+import { LayoutGrid } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useDesktop } from "./desktop-context";
 import { windowConfigs, type WindowId } from "@/content/desktop";
@@ -18,28 +18,26 @@ export function Taskbar({ onStartMenuToggle, startMenuOpen }: TaskbarProps) {
     .filter(([, win]) => win.isOpen);
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[60] flex h-12 items-center border-t border-line/80 bg-surface/95 px-2 backdrop-blur-md">
-      {/* Start button */}
-      <button
-        onClick={onStartMenuToggle}
-        className={cn(
-          "mr-2 flex h-8 items-center gap-1.5 rounded px-2.5 transition-colors",
-          startMenuOpen
-            ? "bg-accent-dim/50 text-accent"
-            : "text-muted hover:bg-accent-dim/30 hover:text-accent"
-        )}
-      >
-        <Shield className="h-4 w-4" />
-        <span className="ui-mono-label hidden text-[10px] sm:block">
-          alphasec
-        </span>
-      </button>
+    <div className="fixed inset-x-0 bottom-0 z-[60] flex h-14 items-center bg-white/70 backdrop-blur-xl border-t border-black/[0.06] px-3">
+      {/* Left spacer */}
+      <div className="flex-1" />
 
-      {/* Separator */}
-      <div className="mx-1 h-5 w-px bg-line/60" />
+      {/* Center: start button + open window icons */}
+      <div className="flex items-center gap-1">
+        {/* Start button */}
+        <button
+          onClick={onStartMenuToggle}
+          className={cn(
+            "flex h-11 w-11 items-center justify-center rounded-md transition-colors",
+            startMenuOpen
+              ? "bg-accent/10 text-accent"
+              : "text-foreground/70 hover:bg-black/[0.06]"
+          )}
+        >
+          <LayoutGrid className="h-6 w-6" />
+        </button>
 
-      {/* Open window tabs */}
-      <div className="flex flex-1 items-center gap-1 overflow-x-auto">
+        {/* Open window tabs */}
         {openWindows.map(([id, win]) => {
           const config = windowConfigs[id];
           const Icon = config.icon;
@@ -56,28 +54,30 @@ export function Taskbar({ onStartMenuToggle, startMenuOpen }: TaskbarProps) {
                 }
               }}
               className={cn(
-                "flex h-8 max-w-[160px] items-center gap-1.5 rounded px-2 transition-all",
+                "relative flex h-11 w-11 items-center justify-center rounded-md transition-colors",
                 isActive
-                  ? "bg-accent-dim/40 text-accent"
+                  ? "bg-accent/10 text-accent"
                   : win.isMinimized
-                    ? "text-muted/50 hover:bg-surface-elevated/60 hover:text-muted"
-                    : "text-muted hover:bg-surface-elevated/60 hover:text-foreground"
+                    ? "text-foreground/40 hover:bg-black/[0.06]"
+                    : "text-foreground/60 hover:bg-black/[0.06]"
               )}
+              title={config.title}
             >
-              <Icon className="h-3 w-3 shrink-0" />
-              <span className="ui-mono-label truncate text-[10px]">
-                {config.title}
-              </span>
+              <Icon className="h-5.5 w-5.5" />
+              {/* Win11-style active indicator line */}
               {isActive && (
-                <span className="ml-auto h-1 w-1 shrink-0 rounded-full bg-accent" />
+                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 h-[3px] w-5 rounded-full bg-accent" />
+              )}
+              {!isActive && win.isOpen && !win.isMinimized && (
+                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 h-[3px] w-1.5 rounded-full bg-foreground/30" />
               )}
             </button>
           );
         })}
       </div>
 
-      {/* System tray */}
-      <div className="ml-2 shrink-0 border-l border-line/60 pl-2">
+      {/* Right: system tray */}
+      <div className="flex-1 flex justify-end">
         <SystemTray />
       </div>
     </div>

@@ -15,10 +15,10 @@ function renderLine(line: BootLine, index: number) {
   const base = "font-[family-name:var(--font-ibm-plex-mono)] text-[13px] leading-[1.6] whitespace-pre";
 
   const typeStyles: Record<string, string> = {
-    header: "text-[#00e87a] font-semibold boot-glow",
+    header: "text-[#0078d4] font-semibold boot-glow",
     ok: "text-[#b0b0b0]",
     info: "text-[#8a8a8a]",
-    accent: "text-[#00e87a] boot-glow",
+    accent: "text-[#0078d4] boot-glow",
     dim: "text-[#555555]",
     warn: "text-[#f5a623]",
     error: "text-[#ff4444]",
@@ -32,7 +32,7 @@ function renderLine(line: BootLine, index: number) {
     return (
       <div key={index} className={`${base} ${style}`}>
         {parts[0]}
-        <span className="text-[#00e87a] font-semibold">[ OK ]</span>
+        <span className="text-[#0078d4] font-semibold">[ OK ]</span>
         {parts[1]}
       </div>
     );
@@ -118,6 +118,13 @@ export function BootScreen() {
     });
   }, [visibleLines, waitingForEnter]);
 
+  // Auto-continue 2s after "Press ENTER" appears
+  useEffect(() => {
+    if (!waitingForEnter || isExiting) return;
+    const timer = setTimeout(() => triggerExit(), 2000);
+    return () => clearTimeout(timer);
+  }, [waitingForEnter, isExiting]);
+
   function triggerExit() {
     setIsExiting(true);
     // Restore scroll after exit animation
@@ -178,10 +185,10 @@ export function BootScreen() {
 
                 {/* Blinking cursor or Enter prompt */}
                 {visibleLines > 0 && !isExiting && !waitingForEnter && (
-                  <span className="inline-block w-[8px] h-[14px] bg-[#00e87a] animate-[blink_1s_step-end_infinite] ml-0.5 mt-1 align-middle" />
+                  <span className="inline-block w-[8px] h-[14px] bg-[#0078d4] animate-[blink_1s_step-end_infinite] ml-0.5 mt-1 align-middle" />
                 )}
                 {waitingForEnter && (
-                  <div className="mt-6 font-[family-name:var(--font-ibm-plex-mono)] text-[13px] text-[#00e87a] boot-glow animate-[blink_1.2s_step-end_infinite]">
+                  <div className="mt-6 font-[family-name:var(--font-ibm-plex-mono)] text-[13px] text-[#0078d4] boot-glow animate-[blink_1.2s_step-end_infinite]">
                     Press ENTER to continue...
                   </div>
                 )}
@@ -192,7 +199,7 @@ export function BootScreen() {
           {/* Skip button */}
           <button
             onClick={handleSkip}
-            className="fixed bottom-6 right-6 z-[110] font-[family-name:var(--font-ibm-plex-mono)] text-[12px] text-[#555] hover:text-[#00e87a] border border-[#2a2a2a] hover:border-[#00e87a]/40 px-4 py-2 rounded transition-colors duration-200 bg-[#0a0a0a]/80 backdrop-blur-sm"
+            className="fixed bottom-6 right-6 z-[110] font-[family-name:var(--font-ibm-plex-mono)] text-[12px] text-[#555] hover:text-[#0078d4] border border-[#2a2a2a] hover:border-[#0078d4]/40 px-4 py-2 rounded transition-colors duration-200 bg-[#0a0a0a]/80 backdrop-blur-sm"
             aria-label="Skip boot sequence"
           >
             SKIP <span className="text-[#444] ml-1">[ ESC ]</span>

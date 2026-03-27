@@ -104,16 +104,16 @@ export function Hero() {
                   href={githubLink?.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="ui-mono-label inline-flex items-center gap-2 border border-line px-5 py-2.5 text-muted transition-colors hover:border-accent hover:text-accent"
+                  className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:border-accent hover:text-accent"
                 >
-                  <Github size={14} />
+                  <Github size={15} />
                   GitHub
                 </MagneticButton>
                 <MagneticButton
                   href={emailLink?.href}
-                  className="ui-mono-label inline-flex items-center gap-2 border border-line px-5 py-2.5 text-muted transition-colors hover:border-accent hover:text-accent"
+                  className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:border-accent hover:text-accent"
                 >
-                  <Mail size={14} />
+                  <Mail size={15} />
                   Email
                 </MagneticButton>
               </div>
@@ -142,22 +142,22 @@ export function Hero() {
             >
               <TerminalPanel
                 title="command feed"
-                subtitle="rotating operator context"
+                subtitle="rotating context"
                 status="live"
               >
-                <div className="space-y-4 p-5">
-                  <div className="ui-mono-label text-muted">
-                    <span className="text-accent">~</span> active snapshot
-                  </div>
-                  <div className="ui-mono-body border border-line/70 bg-background/60 p-4">
-                    <div className="text-accent">
-                      <span className="text-muted">&gt; </span>
+                <div className="space-y-3 p-5">
+                  <p className="text-xs font-medium text-muted">
+                    Active snapshot
+                  </p>
+                  <div className="rounded-lg border border-line bg-background/70 p-4">
+                    <p className="font-mono text-sm text-foreground">
+                      <span className="text-muted">$ </span>
                       {commandSnapshots[activeCommand].command}
-                    </div>
-                    <div className="ui-mono-meta mt-4 space-y-2 text-muted">
+                    </p>
+                    <div className="mt-3 space-y-1.5">
                       {commandSnapshots[activeCommand].output.map((line) => (
-                        <div key={line} className="flex gap-3">
-                          <span className="text-accent/60">|</span>
+                        <div key={line} className="flex items-start gap-2 text-sm text-foreground/70">
+                          <span className="mt-[5px] h-1 w-1 shrink-0 rounded-full bg-accent/50" />
                           <span>{line}</span>
                         </div>
                       ))}

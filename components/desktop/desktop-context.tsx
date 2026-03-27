@@ -36,6 +36,7 @@ type DesktopAction =
   | { type: "MAXIMIZE_WINDOW"; id: WindowId }
   | { type: "FOCUS_WINDOW"; id: WindowId }
   | { type: "MOVE_WINDOW"; id: WindowId; position: { x: number; y: number } }
+  | { type: "RESIZE_WINDOW"; id: WindowId; size: { width: number; height: number } }
   | { type: "SET_BOOT_COMPLETE" };
 
 /* ── Helpers ─────────────────────────────────────────── */
@@ -107,7 +108,7 @@ function desktopReducer(
             ...win,
             isOpen: true,
             isMinimized: false,
-            isMaximized: false,
+            isMaximized: config.openMaximized !== false,
             position: pos,
             size: win.isOpen ? win.size : { ...config.defaultSize },
             zIndex: nextZ,
@@ -195,6 +196,23 @@ function desktopReducer(
       };
     }
 
+    case "RESIZE_WINDOW": {
+      const cfg = windowConfigs[action.id];
+      return {
+        ...state,
+        windows: {
+          ...state.windows,
+          [action.id]: {
+            ...state.windows[action.id],
+            size: {
+              width: Math.max(cfg.minSize.width, action.size.width),
+              height: Math.max(cfg.minSize.height, action.size.height),
+            },
+          },
+        },
+      };
+    }
+
     case "SET_BOOT_COMPLETE": {
       return { ...state, bootComplete: true };
     }
@@ -214,6 +232,7 @@ interface DesktopContextValue {
   maximizeWindow: (id: WindowId) => void;
   focusWindow: (id: WindowId) => void;
   moveWindow: (id: WindowId, position: { x: number; y: number }) => void;
+  resizeWindow: (id: WindowId, size: { width: number; height: number }) => void;
   setBootComplete: () => void;
 }
 
@@ -247,6 +266,11 @@ export function DesktopProvider({ children }: { children: ReactNode }) {
       dispatch({ type: "MOVE_WINDOW", id, position }),
     []
   );
+  const resizeWindow = useCallback(
+    (id: WindowId, size: { width: number; height: number }) =>
+      dispatch({ type: "RESIZE_WINDOW", id, size }),
+    []
+  );
   const setBootComplete = useCallback(
     () => dispatch({ type: "SET_BOOT_COMPLETE" }),
     []
@@ -262,6 +286,7 @@ export function DesktopProvider({ children }: { children: ReactNode }) {
         maximizeWindow,
         focusWindow,
         moveWindow,
+        resizeWindow,
         setBootComplete,
       }}
     >

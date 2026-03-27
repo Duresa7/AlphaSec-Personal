@@ -29,23 +29,28 @@ export const bootSequence: BootLine[] = [
   { text: "", delay: 200, type: "blank" },
   { text: "Performing POST checks...", delay: 150, type: "info" },
   {
-    text: "  CPU:  AMD Ryzen 9 7950X .......................... [ OK ]",
+    text: "  CPU:  AMD Ryzen 9 9950X3D ........................ [ OK ]",
     delay: 60,
     type: "ok",
   },
   {
-    text: "  RAM:  64 GB DDR5 ECC ............................. [ OK ]",
+    text: "  RAM:  Corsair DDR5 32GB CL30 6000MHz ............. [ OK ]",
+    delay: 50,
+    type: "ok",
+  },
+  {
+    text: "  GPU:  NVIDIA RTX 5070 Ti (MSI) ................... [ OK ]",
+    delay: 40,
+    type: "ok",
+  },
+  {
+    text: "  SSD:  Samsung 990 Pro 2TB + 980 Pro 1TB .......... [ OK ]",
     delay: 50,
     type: "ok",
   },
   {
     text: "  NIC:  10GbE SFP+ (eth0) ......................... [ OK ]",
     delay: 50,
-    type: "ok",
-  },
-  {
-    text: "  GPU:  NVIDIA RTX 4090 ............................ [ OK ]",
-    delay: 40,
     type: "ok",
   },
   {
@@ -238,49 +243,86 @@ export const bootSequence: BootLine[] = [
   },
   { text: "", delay: 200, type: "blank" },
   {
-    text: " ╔══════════════════════════════════════════════════════╗",
-    delay: 80,
+    text: "  ██████╗ ██╗   ██╗██████╗ ███████╗███████╗ █████╗",
+    delay: 50,
     type: "accent",
   },
   {
-    text: " ║           ALPHASEC SECURITY WORKSTATION              ║",
-    delay: 60,
-    type: "accent",
-  },
-  {
-    text: " ║                                                      ║",
+    text: "  ██╔══██╗██║   ██║██╔══██╗██╔════╝██╔════╝██╔══██╗",
     delay: 40,
     type: "accent",
   },
   {
-    text: " ║   Operator:    Duresa Kadi                           ║",
-    delay: 60,
-    type: "accent",
-  },
-  {
-    text: " ║   Clearance:   Security+ │ AWS CCP                   ║",
-    delay: 60,
-    type: "accent",
-  },
-  {
-    text: " ║   Base:        Silver Spring, MD                     ║",
-    delay: 60,
-    type: "accent",
-  },
-  {
-    text: " ║   Status:      OPERATIONAL                           ║",
-    delay: 60,
-    type: "accent",
-  },
-  {
-    text: " ║                                                      ║",
+    text: "  ██║  ██║██║   ██║██████╔╝█████╗  ███████╗███████║",
     delay: 40,
     type: "accent",
   },
   {
-    text: " ╚══════════════════════════════════════════════════════╝",
-    delay: 80,
+    text: "  ██║  ██║██║   ██║██╔══██╗██╔══╝  ╚════██║██╔══██║",
+    delay: 40,
     type: "accent",
+  },
+  {
+    text: "  ██████╔╝╚██████╔╝██║  ██║███████╗███████║██║  ██║",
+    delay: 40,
+    type: "accent",
+  },
+  {
+    text: "  ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝",
+    delay: 40,
+    type: "accent",
+  },
+  { text: "", delay: 30, type: "blank" },
+  {
+    text: "  ██╗  ██╗ █████╗ ██████╗ ██╗",
+    delay: 40,
+    type: "accent",
+  },
+  {
+    text: "  ██║ ██╔╝██╔══██╗██╔══██╗██║",
+    delay: 40,
+    type: "accent",
+  },
+  {
+    text: "  █████╔╝ ███████║██║  ██║██║",
+    delay: 40,
+    type: "accent",
+  },
+  {
+    text: "  ██╔═██╗ ██╔══██║██║  ██║██║",
+    delay: 40,
+    type: "accent",
+  },
+  {
+    text: "  ██║  ██╗██║  ██║██████╔╝██║",
+    delay: 40,
+    type: "accent",
+  },
+  {
+    text: "  ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝",
+    delay: 40,
+    type: "accent",
+  },
+  { text: "", delay: 150, type: "blank" },
+  {
+    text: "  Operator:    Duresa Kadi",
+    delay: 60,
+    type: "info",
+  },
+  {
+    text: "  Clearance:   Security+ | AWS CCP",
+    delay: 60,
+    type: "info",
+  },
+  {
+    text: "  Base:        Silver Spring, MD",
+    delay: 60,
+    type: "info",
+  },
+  {
+    text: "  Status:      OPERATIONAL",
+    delay: 60,
+    type: "ok",
   },
   { text: "", delay: 250, type: "blank" },
   {
