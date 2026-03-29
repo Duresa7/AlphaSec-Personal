@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, IBM_Plex_Mono } from "next/font/google";
+import Script from "next/script";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { DesktopProvider } from "@/components/desktop/desktop-context";
 import { BootScreen } from "@/components/ui/boot-screen";
@@ -31,6 +32,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <Script
+          defer
+          src="https://umami.alphsec.com/script.js"
+          data-website-id="132d6f2f-a1d4-4e62-a44d-1a8cf1bc080b"
+          strategy="afterInteractive"
+        />
+      </head>
       <body
         className={`${outfit.variable} ${ibmPlexMono.variable} bg-background text-foreground antialiased`}
       >
