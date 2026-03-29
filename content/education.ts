@@ -1,5 +1,6 @@
 export interface Education {
   school: string;
+  location: string;
   degree: string;
   expected: string;
   gpa?: string;
@@ -10,34 +11,35 @@ export interface Education {
 export const education: Education[] = [
   {
     school: "University of Maryland Global Campus",
-    degree: "B.S. in Cyber Operations",
+    location: "Adelphi, MD",
+    degree: "Bachelor of Science in Cyber Operations",
     expected: "Expected November 2027",
   },
   {
     school: "Montgomery College",
-    degree: "A.A.S. in Cybersecurity",
+    location: "Rockville, MD",
+    degree: "Associate of Applied Science in Cybersecurity",
     expected: "June 2025",
-    gpa: "3.4 / 4.0",
-    honors: ["3× Dean's List"],
+    gpa: "3.4",
     coursework: [
       "Network Security",
       "Cyber Operations",
       "Incident Response",
       "Digital Forensics",
-      "Attacker Tools & Techniques",
+      "Attacker Tools and Techniques",
       "UNIX/Linux System Administration",
-      "Introduction to Networking",
+      "Defending the Network",
       "Wireless Security",
-      "Introduction to Cloud Computing",
+      "Microcomputer Essentials",
+      "Cloud Computing",
     ],
   },
 ];
 
 export const certifications: string[] = [
-  "AWS Certified Cloud Practitioner",
   "CompTIA Security+",
-  "Anthropic AI Fluency: Framework & Foundations",
-  "Anthropic: Claude 101",
+  "AWS Certified Cloud Practitioner",
+  "Anthropic AI Fluency",
   "Anthropic: Building with Claude API",
   "Anthropic MCP: Advanced Topics",
 ];

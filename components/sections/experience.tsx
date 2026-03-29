@@ -20,7 +20,7 @@ export function Experience() {
         <div className="mt-8 flex items-center gap-2">
           <button
             onClick={() => setView("timeline")}
-            className={`rounded-full border px-4 py-1.5 text-xs font-medium transition-colors ${
+            className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
               view === "timeline"
                 ? "border-accent bg-accent text-white"
                 : "border-line text-muted hover:border-foreground/30 hover:text-foreground"
@@ -30,7 +30,7 @@ export function Experience() {
           </button>
           <button
             onClick={() => setView("systemctl")}
-            className={`rounded-full border px-4 py-1.5 text-xs font-medium transition-colors ${
+            className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
               view === "systemctl"
                 ? "border-accent bg-accent text-white"
                 : "border-line text-muted hover:border-foreground/30 hover:text-foreground"
@@ -61,21 +61,21 @@ export function Experience() {
 
                   <div className="grid gap-5 lg:grid-cols-[220px_1fr]">
                   <div>
-                    <p className="text-xs font-semibold text-accent">
+                    <p className="text-sm font-semibold text-accent md:text-[15px]">
                       {job.period}
                     </p>
-                    <p className="text-xs text-muted mt-1.5">
+                    <p className="mt-1.5 text-sm text-foreground md:text-[15px]">
                       {job.location}
                     </p>
                   </div>
 
-                  <div className="network-panel p-5 md:p-6">
+                  <div className="network-panel p-6 md:p-7">
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div>
-                        <h3 className="font-heading text-lg font-semibold text-foreground">
+                        <h3 className="font-heading text-xl font-semibold text-foreground md:text-2xl">
                           {job.role}
                         </h3>
-                        <p className="mt-1 text-sm text-muted">
+                        <p className="mt-1.5 text-base text-foreground md:text-lg">
                           {job.company}
                         </p>
                       </div>
@@ -90,7 +90,7 @@ export function Experience() {
                       {job.bullets.map((bullet, i) => (
                         <li
                           key={i}
-                          className="relative pl-4 text-sm leading-relaxed text-foreground/75"
+                          className="relative pl-4 text-base leading-8 text-foreground md:text-[17px]"
                         >
                           <span className="absolute left-0 top-[9px] h-1 w-1 rounded-full bg-accent/50" />
                           {bullet}

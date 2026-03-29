@@ -5,6 +5,9 @@ import { TerminalPanel } from "@/components/ui/terminal-panel";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { staggerContainer } from "@/lib/animations";
+import { education, certifications } from "@/content/education";
+import { experience } from "@/content/experience";
+import { projects } from "@/content/projects";
 
 interface Hop {
   number: number;
@@ -22,64 +25,72 @@ const hops: Hop[] = [
     hostname: "montgomery-college.edu",
     ip: "10.0.1.1",
     latencyMs: 24,
-    label: "A.A.S. Cybersecurity",
-    detail: "Montgomery College - 3.4 GPA, 3x Dean's List",
+    label: education[1].degree,
+    detail: `${education[1].school} | ${education[1].location} | GPA: ${education[1].gpa} | ${education[1].expected}`,
   },
   {
     number: 2,
     hostname: "comptia.org",
     ip: "10.0.2.1",
     latencyMs: 6,
-    label: "CompTIA Security+",
-    detail: "Industry certification - security fundamentals",
+    label: certifications[0],
+    detail: certifications[0],
   },
   {
     number: 3,
     hostname: "aws.amazon.com",
     ip: "10.0.2.2",
     latencyMs: 4,
-    label: "AWS Cloud Practitioner",
-    detail: "Cloud certification - foundational AWS",
+    label: certifications[1],
+    detail: certifications[1],
   },
   {
     number: 4,
     hostname: "alphabiz.local",
     ip: "10.0.3.1",
     latencyMs: 42,
-    label: "AlphaBiz - IT Owner",
-    detail: "Feb 2022 - Jun 2025 · 148+ clients, $4K+ revenue",
+    label: experience[3].role,
+    detail: `${experience[3].company} | ${experience[3].location} | ${experience[3].period}`,
   },
   {
     number: 5,
     hostname: "converse.edu",
     ip: "10.0.4.1",
     latencyMs: 24,
-    label: "Converse - Head Coach",
-    detail: "Jul 2023 - Jun 2025 · Esports strategy & analytics",
+    label: experience[2].role,
+    detail: `${experience[2].company} | ${experience[2].location} | ${experience[2].period}`,
   },
   {
     number: 6,
-    hostname: "waabee-selfhelp.org",
+    hostname: "nightblood.gg",
     ip: "10.0.5.1",
     latencyMs: 23,
-    label: "Waabee - IT Technician",
-    detail: "Jan 2024 - Dec 2025 · Sole IT specialist, serverless AWS",
+    label: experience[1].role,
+    detail: `${experience[1].company} | ${experience[1].location} | ${experience[1].period}`,
   },
   {
     number: 7,
-    hostname: "proxmox.homelab.local",
-    ip: "10.10.0.1",
-    latencyMs: 1,
-    label: "Homelab Deployed",
-    detail: "Proxmox, Wazuh SIEM, Suricata IDS, WireGuard, n8n + Claude API",
+    hostname: "waabee-selfhelp.org",
+    ip: "10.0.5.2",
+    latencyMs: 19,
+    label: experience[0].role,
+    detail: `${experience[0].company} | ${experience[0].location} | ${experience[0].period}`,
   },
   {
     number: 8,
+    hostname: "proxmox.homelab.local",
+    ip: "10.10.0.1",
+    latencyMs: 1,
+    label: projects[0].name,
+    detail: `${projects[0].stack.join(", ")} | ${projects[0].period}`,
+  },
+  {
+    number: 9,
     hostname: "umgc.edu",
     ip: "10.0.6.1",
     latencyMs: -1,
-    label: "B.S. Cyber Operations",
-    detail: "UMGC - Expected Nov 2027",
+    label: education[0].degree,
+    detail: `${education[0].school} | ${education[0].location} | ${education[0].expected}`,
     inProgress: true,
   },
 ];

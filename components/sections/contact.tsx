@@ -5,7 +5,6 @@ import { AnimateIn } from "@/components/motion/animate-in";
 import { Mail, Github, Linkedin, ChevronDown, ChevronUp } from "lucide-react";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { SectionDivider } from "@/components/ui/section-divider";
-import { StatusPill } from "@/components/ui/status-pill";
 import { TerminalPanel } from "@/components/ui/terminal-panel";
 import { DnsLookupCard } from "@/components/ui/dns-lookup-card";
 import { CrontabSchedule } from "@/components/ui/crontab-schedule";
@@ -37,7 +36,7 @@ export function Contact() {
                 Let&apos;s connect
               </h2>
 
-              <p className="mx-auto mt-4 max-w-md text-base text-foreground/60 leading-relaxed">
+              <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-foreground">
                 Currently seeking any IT opportunities. Feel free to reach out.
               </p>
 
@@ -52,7 +51,7 @@ export function Contact() {
                       href={link.href}
                       target={isExternal ? "_blank" : undefined}
                       rel={isExternal ? "noopener noreferrer" : undefined}
-                      className="inline-flex items-center gap-2 rounded-lg border border-line px-6 py-3 text-sm font-medium text-foreground/80 transition-colors hover:border-accent hover:text-accent"
+                      className="inline-flex items-center gap-2 rounded-lg border border-line px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
                     >
                       <Icon size={15} />
                       {link.key}
@@ -68,7 +67,7 @@ export function Contact() {
         <div className="mt-6 flex justify-center">
           <button
             onClick={() => setShowExtras(!showExtras)}
-            className="flex items-center gap-2 text-xs font-medium text-muted/60 transition-colors hover:text-accent"
+            className="flex items-center gap-2 text-xs font-medium text-foreground/90 transition-colors hover:text-accent"
           >
             DNS records &amp; schedule
             {showExtras ? <ChevronUp size={12} /> : <ChevronDown size={12} />}

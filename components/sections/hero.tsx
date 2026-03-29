@@ -9,39 +9,26 @@ import { MagneticButton } from "@/components/ui/magnetic-button";
 import { SystemStatCard } from "@/components/ui/system-stat-card";
 import { TerminalPanel } from "@/components/ui/terminal-panel";
 import { primaryContactLinks } from "@/content/site";
+import { education, certifications } from "@/content/education";
+import { experience } from "@/content/experience";
+import { projects } from "@/content/projects";
 
 const commandSnapshots = [
   {
-    command: "whoami",
-    output: [
-      "duresa",
-      "role=it-ops",
-      "focus=network-defense+cloud",
-    ],
+    command: "cat resume/experience.txt",
+    output: experience.map((job) => job.company),
   },
   {
-    command: "ip addr show homelab0",
-    output: [
-      "mgmt: 10.10.10.0/24",
-      "servers: 10.10.20.0/24",
-      "dmz: segmented + monitored",
-    ],
+    command: "cat resume/education.txt",
+    output: education.map((entry) => entry.degree),
   },
   {
-    command: "ss -tulpn",
-    output: [
-      "wireguard: established",
-      "wazuh: listening",
-      "exposure: zero open wan ports",
-    ],
+    command: "cat resume/certifications.txt",
+    output: certifications.slice(0, 3),
   },
   {
-    command: "nmap --top-ports 20 perimeter",
-    output: [
-      "cloudflare-tunnel: proxied",
-      "suricata: alerting",
-      "response: automated-enrichment",
-    ],
+    command: "cat resume/projects.txt",
+    output: projects.slice(0, 2).map((project) => project.name),
   },
 ];
 
@@ -50,6 +37,9 @@ export function Hero() {
   const [activeCommand, setActiveCommand] = useState(0);
   const githubLink = primaryContactLinks.find((link) => link.key === "github");
   const emailLink = primaryContactLinks.find((link) => link.key === "email");
+  const mostRecentDegree =
+    education.find((entry) => entry.school === "Montgomery College") ??
+    education[0];
 
   useEffect(() => {
     if (!typewriterDone) {
@@ -94,7 +84,7 @@ export function Hero() {
           </motion.h1>
 
           <motion.p variants={fadeInUp} className="ui-mono-label mt-3 text-muted">
-            IT &amp; security professional
+            resume-backed portfolio
           </motion.p>
 
           <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
@@ -124,14 +114,15 @@ export function Hero() {
               >
                 <SystemStatCard
                   label="certifications"
-                  value="Security+ / AWS CCP"
-                  meta="Security operations and foundational cloud coverage."
+                  value={certifications[0]}
+                  meta={certifications[1]}
                   status="verified"
                 />
                 <SystemStatCard
                   label="education"
-                  value="A.A.S. Cybersecurity"
-                  meta="Montgomery College - 3.4 GPA, 3x Dean's List."
+                  value={mostRecentDegree.degree}
+                  meta={`${mostRecentDegree.school}, ${mostRecentDegree.location}`}
+                  status={mostRecentDegree.expected}
                 />
               </motion.div>
             </motion.div>

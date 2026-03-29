@@ -3,6 +3,7 @@ import { Outfit, IBM_Plex_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { DesktopProvider } from "@/components/desktop/desktop-context";
 import { BootScreen } from "@/components/ui/boot-screen";
+import { certifications, education } from "@/content/education";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -19,9 +20,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Duresa Kadi - IT & Security Professional",
-  description:
-    "IT & Security Professional - cloud infrastructure, networking, systems administration, and security operations.",
+  title: "Duresa Kadi",
+  description: `${certifications[0]}, ${certifications[1]}, ${education[0].degree}, ${education[0].expected}.`,
 };
 
 export default function RootLayout({

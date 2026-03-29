@@ -14,8 +14,6 @@ interface SectionDividerProps {
 export function SectionDivider({
   label,
   step,
-  status,
-  animate = true,
   className = "",
 }: SectionDividerProps) {
   return (

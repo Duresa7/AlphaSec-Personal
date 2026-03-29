@@ -1,3 +1,5 @@
+import { certifications } from "./education";
+
 export interface BootLine {
   text: string;
   delay: number;
@@ -305,17 +307,22 @@ export const bootSequence: BootLine[] = [
   },
   { text: "", delay: 150, type: "blank" },
   {
-    text: "  Operator:    Duresa Kadi",
+    text: "  Name:        Duresa Kadi",
     delay: 60,
     type: "info",
   },
   {
-    text: "  Clearance:   Security+ | AWS CCP",
+    text: `  Certification: ${certifications[0]}`,
     delay: 60,
     type: "info",
   },
   {
-    text: "  Base:        Silver Spring, MD",
+    text: `  Certification: ${certifications[1]}`,
+    delay: 60,
+    type: "info",
+  },
+  {
+    text: "  Location:    Silver Spring, MD",
     delay: 60,
     type: "info",
   },

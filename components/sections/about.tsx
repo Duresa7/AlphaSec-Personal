@@ -49,7 +49,7 @@ export function About() {
                 className="rounded-lg border border-line bg-surface p-4 md:p-5"
               >
                 <StatusPill className="mb-3">{paragraphLabels[i]}</StatusPill>
-                <p className="max-w-3xl text-sm leading-relaxed text-foreground/75 md:text-base">
+                <p className="max-w-3xl text-sm leading-relaxed text-foreground md:text-base">
                   {text}
                 </p>
               </motion.div>
@@ -61,7 +61,7 @@ export function About() {
         <div className="mt-6">
           <button
             onClick={() => setShowIptables(!showIptables)}
-            className="flex items-center gap-2 text-xs font-medium text-muted/60 transition-colors hover:text-accent"
+            className="flex items-center gap-2 text-xs font-medium text-foreground/90 transition-colors hover:text-accent"
           >
             Operator policy
             {showIptables ? <ChevronUp size={12} /> : <ChevronDown size={12} />}

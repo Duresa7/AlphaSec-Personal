@@ -10,7 +10,7 @@ interface StatusPillProps {
 
 const statusStyles = {
   default:
-    "border-line text-muted bg-background/60",
+    "border-line text-foreground/90 bg-background/60",
   active:
     "border-accent/25 text-accent bg-accent/[0.06]",
   warning:

@@ -1,6 +1,7 @@
 "use client";
 
 import { siteProfile } from "@/content/site";
+import { education, certifications } from "@/content/education";
 
 const terminalLines = [
   { prompt: true, text: "neofetch" },
@@ -65,13 +66,25 @@ const terminalLines = [
   { text: `  Location: ${siteProfile.locationLabel}`, color: "light" },
   { text: `  Theme:    win11-blue [light]`, color: "light" },
   { text: "" },
-  { prompt: true, text: "whoami" },
+  { prompt: true, text: "cat resume/profile.txt" },
   {
-    text: `  IT & Cybersecurity Professional`,
+    text: `  ${siteProfile.name}`,
     color: "accent",
   },
   {
-    text: `  Cloud Infrastructure · Networking · Security Ops`,
+    text: `  ${education[0].degree}`,
+    color: "light",
+  },
+  {
+    text: `  ${certifications[0]}`,
+    color: "light",
+  },
+  {
+    text: `  ${certifications[1]}`,
+    color: "light",
+  },
+  {
+    text: `  ${education[0].expected}`,
     color: "light",
   },
   { text: "" },

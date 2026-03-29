@@ -38,7 +38,7 @@ export function Projects() {
                     <h3 className="font-heading text-lg font-semibold text-foreground">
                       {project.name}
                     </h3>
-                    <p className="text-xs text-muted mt-1">
+                    <p className="mt-1 text-xs text-foreground/90">
                       {project.period}
                     </p>
                   </div>
@@ -47,7 +47,7 @@ export function Projects() {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-shrink-0 text-muted transition-colors hover:text-accent"
+                      className="flex-shrink-0 text-foreground/90 transition-colors hover:text-accent"
                       aria-label={`View ${project.name}`}
                     >
                       <ExternalLink size={16} />
@@ -65,7 +65,7 @@ export function Projects() {
                   {project.bullets.map((bullet, i) => (
                     <li
                       key={i}
-                      className="relative pl-4 text-sm leading-relaxed text-foreground/75"
+                      className="relative pl-4 text-sm leading-relaxed text-foreground"
                     >
                       <span className="absolute left-0 top-[9px] h-1 w-1 rounded-full bg-accent/50" />
                       {bullet}
@@ -75,7 +75,7 @@ export function Projects() {
 
                 {project.diagramUrl && (
                   <div className="mt-6">
-                    <p className="text-xs font-medium mb-3 text-muted">
+                    <p className="mb-3 text-xs font-medium text-foreground/90">
                       Network diagram
                     </p>
                     <div className="overflow-hidden border border-line">
@@ -90,7 +90,7 @@ export function Projects() {
 
                 {project.videoUrl && (
                   <div className="mt-6">
-                    <p className="text-xs font-medium mb-3 text-muted">
+                    <p className="mb-3 text-xs font-medium text-foreground/90">
                       Demo
                     </p>
                     <div className="overflow-hidden border border-line">
@@ -111,7 +111,7 @@ export function Projects() {
                   <div className="mt-6">
                     <button
                       onClick={() => setHtopOpen(!htopOpen)}
-                      className="mb-3 flex items-center gap-2 text-xs font-medium text-muted/60 transition-colors hover:text-accent"
+                      className="mb-3 flex items-center gap-2 text-xs font-medium text-foreground/90 transition-colors hover:text-accent"
                     >
                       Live services
                       {htopOpen ? <ChevronUp size={12} /> : <ChevronDown size={12} />}

@@ -15,7 +15,7 @@ export function WorkExamplesWindow() {
           <h1 className="font-heading text-3xl font-bold tracking-tight md:text-4xl">
             Case Files
           </h1>
-          <p className="mt-2 font-mono text-[11px] text-muted/50">
+          <p className="mt-2 font-mono text-[11px] text-foreground/90">
             {workExamples.length} projects // detailed breakdowns
           </p>
         </div>
@@ -41,7 +41,7 @@ export function WorkExamplesWindow() {
                   <h2 className="font-heading text-2xl font-semibold tracking-tight">
                     {example.title}
                   </h2>
-                  <p className="mt-1 font-mono text-xs text-muted/60">
+                  <p className="mt-1 font-mono text-xs text-foreground/90">
                     {example.subtitle}
                   </p>
                 </div>
@@ -50,7 +50,7 @@ export function WorkExamplesWindow() {
                     href={example.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex shrink-0 items-center gap-2 border border-line px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:border-accent hover:text-accent"
+                    className="inline-flex shrink-0 items-center gap-2 border border-line px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-foreground/90 transition-colors hover:border-accent hover:text-accent"
                   >
                     View <ExternalLink size={12} />
                   </MagneticButton>
@@ -80,13 +80,13 @@ export function WorkExamplesWindow() {
                     {idx > 0 && (
                       <div className="my-4 flex items-center gap-3">
                         <div className="h-px flex-1 bg-line/50" />
-                        <span className="font-mono text-[10px] text-muted/30">
+                        <span className="font-mono text-[10px] text-foreground/70">
                           {String(idx + 1).padStart(2, "0")}
                         </span>
                         <div className="h-px flex-1 bg-line/50" />
                       </div>
                     )}
-                    <p className="max-w-prose text-sm leading-[1.8] text-muted">
+                    <p className="max-w-prose text-sm leading-[1.8] text-foreground">
                       {paragraph}
                     </p>
                     {example.id === "valobrain" && idx === 0 && (

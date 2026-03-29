@@ -28,12 +28,12 @@ export function TerminalPanel({
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-4 py-2.5">
           <div className="min-w-0">
             {title && (
-              <p className="text-xs font-medium truncate text-foreground/80">
+              <p className="truncate text-xs font-medium text-foreground">
                 {title}
               </p>
             )}
             {subtitle && (
-              <p className="text-[11px] truncate text-muted/60 mt-0.5">
+              <p className="mt-0.5 truncate text-[11px] text-foreground/90">
                 {subtitle}
               </p>
             )}

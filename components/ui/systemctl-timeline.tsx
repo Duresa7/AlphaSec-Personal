@@ -29,8 +29,8 @@ function ServiceCard({
       <button
         onClick={() => setExpanded(!expanded)}
         className={cn(
-          "ui-mono-body w-full text-left transition-colors",
-          "border border-line/70 bg-background/40 p-4 hover:border-accent/30",
+          "ui-mono-body w-full text-left text-[15px] leading-7 transition-colors",
+          "border border-line/70 bg-background/40 p-4 md:p-5 hover:border-accent/30",
           expanded && "border-b-0"
         )}
       >
@@ -43,7 +43,7 @@ function ServiceCard({
           />
           <span className="text-accent">{serviceName}</span>
           <span className="text-muted/50">-</span>
-          <span className="text-foreground/80">{job.role}</span>
+          <span className="text-foreground/90">{job.role}</span>
           <StatusPill status={isActive ? "active" : "default"}>
             {isActive ? "active (running)" : "inactive (exited)"}
           </StatusPill>
@@ -57,21 +57,21 @@ function ServiceCard({
           expanded ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
         )}
       >
-        <div className="border border-t-0 border-line/70 bg-background/30 p-4 md:p-5">
+        <div className="border border-t-0 border-line/70 bg-background/30 p-5 md:p-6">
           {/* Unit file */}
-          <div className="ui-mono-meta space-y-0.5">
+          <div className="ui-mono-meta space-y-1 text-[15px] leading-7">
             <p className="text-accent font-medium">[Unit]</p>
             <p>
               <span className="text-muted/50">Description=</span>
-              <span className="text-foreground/80">{job.role} @ {job.company}</span>
+              <span className="text-foreground/90">{job.role} @ {job.company}</span>
             </p>
             <p>
               <span className="text-muted/50">Documentation=</span>
-              <span className="text-foreground/60">man:{slugify(job.company)}</span>
+              <span className="text-foreground/75">man:{slugify(job.company)}</span>
             </p>
             <p>
               <span className="text-muted/50">After=</span>
-              <span className="text-foreground/60">
+              <span className="text-foreground/75">
                 {index < experience.length - 1
                   ? `${slugify(experience[index + 1].company)}.service`
                   : "network.target"}
@@ -81,44 +81,44 @@ function ServiceCard({
             <p className="mt-3 text-accent font-medium">[Service]</p>
             <p>
               <span className="text-muted/50">Type=</span>
-              <span className="text-foreground/60">{isActive ? "simple" : "oneshot"}</span>
+              <span className="text-foreground/75">{isActive ? "simple" : "oneshot"}</span>
             </p>
             <p>
               <span className="text-muted/50">User=</span>
-              <span className="text-foreground/60">duresa</span>
+              <span className="text-foreground/75">duresa</span>
             </p>
             <p>
               <span className="text-muted/50">WorkingDirectory=</span>
-              <span className="text-foreground/60">/opt/{slugify(job.company)}</span>
+              <span className="text-foreground/75">/opt/{slugify(job.company)}</span>
             </p>
             <p>
               <span className="text-muted/50">ExecStart=</span>
-              <span className="text-foreground/80">/usr/local/bin/{slugify(job.role)}</span>
+              <span className="text-foreground/90">/usr/local/bin/{slugify(job.role)}</span>
             </p>
             <p>
               <span className="text-muted/50">Environment=</span>
-              <span className="text-foreground/60">LOCATION={job.location}</span>
+              <span className="text-foreground/75">LOCATION={job.location}</span>
             </p>
 
             <p className="mt-3 text-accent font-medium">[Install]</p>
             <p>
               <span className="text-muted/50">WantedBy=</span>
-              <span className="text-foreground/60">career.target</span>
+              <span className="text-foreground/75">career.target</span>
             </p>
           </div>
 
           {/* Journal entries */}
           <div className="mt-5 border-t border-line/50 pt-4">
-            <p className="ui-mono-label mb-2 text-muted/40">
+            <p className="ui-mono-label mb-3 text-xs text-muted/55">
               journalctl -u {serviceName} --no-pager -n {job.bullets.length}
             </p>
 
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               {job.bullets.map((bullet, i) => (
-                <div key={i} className="ui-mono-meta">
-                  <span className="text-muted/40">{job.period.split("-")[0].trim()} </span>
+                <div key={i} className="ui-mono-meta text-[15px] leading-7">
+                  <span className="text-muted/55">{job.period.split("-")[0].trim()} </span>
                   <span className="text-accent/60">{slugify(job.company)}[{3000 + index * 100 + i}]: </span>
-                  <span className="text-muted/80">{bullet}</span>
+                  <span className="text-foreground/85">{bullet}</span>
                 </div>
               ))}
             </div>
