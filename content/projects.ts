@@ -12,20 +12,25 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    name: "Homelab",
+    name: "AlphaSec Home Datacenter",
     stack: [
-      "Proxmox",
+      "Proxmox VE",
+      "UniFi",
+      "Cloudflare",
+      "Ansible",
+      "WireGuard",
+      "Caddy",
+      "Traefik",
       "Wazuh",
       "Suricata",
-      "WireGuard",
-      "Cloudflare",
       "n8n",
-      "Python",
     ],
     period: "January 2024",
     bullets: [
-      "Architected segmented homelab on Proxmox with multi-VLAN isolation (MGMT/SERVERS/DMZ), UniFi ACLs, WireGuard VPN, Cloudflare Tunnel with zero open WAN ports, Caddy reverse proxy, and end-to-end monitoring via Wazuh SIEM and Suricata IDS correlation.",
-      "Built automated threat-response pipeline via n8n: ingests Wazuh alerts, enriches IOCs via VirusTotal and IP feeds, invokes Claude API for severity classification, and autonomously quarantines compromised hosts.",
+      "Engineered multi-VLAN Proxmox datacenter hosting 9 production workloads across 7 network segments, enforcing zone-based firewall policy with zero open WAN ports via Cloudflare Tunnel ingress.",
+      "Implemented two-layer defense-in-depth by pairing UniFi zone firewalls with a Proxmox datacenter firewall group restricting SSH and web-UI access to an explicit allow list, with WireGuard VPN as the sole off-network admin path.",
+      "Designed wildcard DNS routing through Cloudflare Tunnel, Caddy, and Traefik, reducing new application deployment to a single domain entry in the control plane.",
+      "Built automated threat-response pipeline via n8n that ingests Wazuh alerts, enriches IOCs through VirusTotal and IP feeds, invokes Claude API for severity classification, and autonomously quarantines compromised hosts.",
     ],
     diagramUrl:
       "https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=B3B3B3&edit=_blank&layers=1&nav=1&title=Homala.drawio&dark=auto#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1O2_BcWAGTMvv9xJv3GbOb5rwFLYhuv7Z%26export%3Ddownload",
@@ -56,5 +61,33 @@ export const projects: Project[] = [
     ],
     link: projectLinks.valoBrain,
     videoUrl: "/Valobrain-vid.mp4",
+  },
+  {
+    name: "KADI Active Directory Lab",
+    stack: [
+      "Windows Server 2025",
+      "AD DS",
+      "Group Policy",
+      "PowerShell",
+    ],
+    period: "November 2025",
+    bullets: [
+      "Built Windows Server 2025 forest with primary and secondary domain controllers, designing organizational unit hierarchy and enterprise naming conventions for users, admins, service accounts, workstations, and security groups.",
+      "Authored and deployed Group Policy Objects including a custom password policy and a restrictive managed-user policy disabling command prompt, registry editor, and control panel, validated with gpresult and dcdiag.",
+    ],
+  },
+  {
+    name: "Azure Hybrid Infrastructure Lab",
+    stack: [
+      "Entra ID",
+      "Azure Files",
+      "Azure Backup",
+      "Azure Site Recovery",
+    ],
+    period: "February 2025",
+    bullets: [
+      "Configured Microsoft Entra ID tenant and deployed a cloud-hosted domain controller on Azure IaaS as an alternative to on-premises-only AD, testing identity synchronization and authentication flows across hybrid environments.",
+      "Implemented hybrid file services with Azure Files and evaluated disaster recovery using Azure Backup and Azure Site Recovery, comparing recovery objectives against on-premises alternatives.",
+    ],
   },
 ];

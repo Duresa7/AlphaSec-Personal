@@ -106,8 +106,7 @@ export function Projects() {
                   </div>
                 )}
 
-                {/* htop panel for Homelab */}
-                {project.name === "Homelab" && (
+                {project.name === "AlphaSec Home Datacenter" && (
                   <div className="mt-6">
                     <button
                       onClick={() => setHtopOpen(!htopOpen)}

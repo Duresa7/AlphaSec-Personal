@@ -12,7 +12,7 @@ export const education: Education[] = [
   {
     school: "University of Maryland Global Campus",
     location: "Adelphi, MD",
-    degree: "Bachelor of Science in Cyber Operations",
+    degree: "Bachelor of Science in Cyber Technology",
     expected: "Expected November 2027",
   },
   {
@@ -20,10 +20,9 @@ export const education: Education[] = [
     location: "Rockville, MD",
     degree: "Associate of Applied Science in Cybersecurity",
     expected: "June 2025",
-    gpa: "3.4",
+    gpa: "3.3",
     coursework: [
       "Network Security",
-      "Cyber Operations",
       "Incident Response",
       "Digital Forensics",
       "Attacker Tools and Techniques",

@@ -64,7 +64,7 @@ export default function WorkExamplesPage() {
                     href={example.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex shrink-0 items-center gap-2 border border-line px-5 py-2 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:border-accent hover:text-accent"
+                    className="inline-flex shrink-0 items-center gap-2 border border-accent/60 px-5 py-2 font-mono text-xs uppercase tracking-widest text-accent transition-colors hover:border-accent hover:bg-accent/10"
                   >
                     View Project <ExternalLink size={14} />
                   </MagneticButton>
