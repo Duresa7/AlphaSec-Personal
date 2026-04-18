@@ -90,10 +90,10 @@ export function Experience() {
                       {job.bullets.map((bullet, i) => (
                         <li
                           key={i}
-                          className="relative pl-4 text-base leading-8 text-foreground md:text-[17px]"
+                          className="flex items-start gap-3 text-base leading-8 text-foreground md:text-[17px]"
                         >
-                          <span className="absolute left-0 top-[9px] h-1 w-1 rounded-full bg-accent/50" />
-                          {bullet}
+                          <span className="mt-[14px] h-1 w-1 shrink-0 rounded-full bg-accent/50" />
+                          <span>{bullet}</span>
                         </li>
                       ))}
                     </ul>

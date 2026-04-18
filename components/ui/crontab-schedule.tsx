@@ -34,7 +34,7 @@ const cronEntries: CronEntry[] = [
   {
     schedule: "0 9 * * 1-5",
     command: "/opt/study/umgc-coursework --focus",
-    comment: "Bachelor of Science in Cyber Operations study block",
+    comment: "Bachelor of Science in Cyber Technology study block",
     humanReadable: "Every weekday at 9:00 AM",
     match: {
       minutes: [0],

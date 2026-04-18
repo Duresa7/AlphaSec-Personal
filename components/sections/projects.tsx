@@ -65,10 +65,10 @@ export function Projects() {
                   {project.bullets.map((bullet, i) => (
                     <li
                       key={i}
-                      className="relative pl-4 text-sm leading-relaxed text-foreground"
+                      className="flex items-start gap-3 text-sm leading-relaxed text-foreground"
                     >
-                      <span className="absolute left-0 top-[9px] h-1 w-1 rounded-full bg-accent/50" />
-                      {bullet}
+                      <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-accent/50" />
+                      <span>{bullet}</span>
                     </li>
                   ))}
                 </ul>

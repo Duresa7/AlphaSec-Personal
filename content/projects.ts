@@ -33,7 +33,7 @@ export const projects: Project[] = [
       "Built automated threat-response pipeline via n8n that ingests Wazuh alerts, enriches IOCs through VirusTotal and IP feeds, invokes Claude API for severity classification, and autonomously quarantines compromised hosts.",
     ],
     diagramUrl:
-      "https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=B3B3B3&edit=_blank&layers=1&nav=1&title=Homala.drawio&dark=auto#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1O2_BcWAGTMvv9xJv3GbOb5rwFLYhuv7Z%26export%3Ddownload",
+      "https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=B3B3B3&edit=_blank&layers=1&nav=1&title=AlphaSec-Home-Datacenter.drawio&dark=auto#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1O2_BcWAGTMvv9xJv3GbOb5rwFLYhuv7Z%26export%3Ddownload",
   },
   {
     name: "AlphaSec United",
