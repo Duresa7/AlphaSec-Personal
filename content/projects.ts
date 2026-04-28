@@ -23,6 +23,7 @@ export const projects: Project[] = [
       "Traefik",
       "Wazuh",
       "Suricata",
+      "Splunk",
       "n8n",
     ],
     period: "January 2024",
@@ -30,6 +31,7 @@ export const projects: Project[] = [
       "Engineered multi-VLAN Proxmox datacenter hosting 9 production workloads across 7 network segments, enforcing zone-based firewall policy with zero open WAN ports via Cloudflare Tunnel ingress.",
       "Implemented two-layer defense-in-depth by pairing UniFi zone firewalls with a Proxmox datacenter firewall group restricting SSH and web-UI access to an explicit allow list, with WireGuard VPN as the sole off-network admin path.",
       "Designed wildcard DNS routing through Cloudflare Tunnel, Caddy, and Traefik, reducing new application deployment to a single domain entry in the control plane.",
+      "Configured centralized SIEM pipeline by forwarding UniFi syslog data to Splunk, enabling real-time log aggregation, correlation, and visibility into network and host activity.",
       "Built automated threat-response pipeline via n8n that ingests Wazuh alerts, enriches IOCs through VirusTotal and IP feeds, invokes Claude API for severity classification, and autonomously quarantines compromised hosts.",
     ],
     diagramUrl:

@@ -50,7 +50,7 @@ export const experience: Experience[] = [
     period: "February 2022 - June 2025",
     bullets: [
       "Diagnosed and resolved hardware, software, and OS-level issues for 108 clients, including driver conflicts, boot failures, malware removal, and data recovery.",
-      "Managed full-service client lifecycle independently: intake, troubleshooting, resolution, and communication, generating $4,148 in revenue over two years.",
+      "Managed full-service client lifecycle independently: intake, troubleshooting, resolution, and communication, generating $13,148 in revenue over two years.",
       "Performed Windows system hardening and optimization across diverse client environments, including OS configuration, driver management, and security baseline tuning.",
     ],
   },
