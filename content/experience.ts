@@ -33,7 +33,7 @@ export const experience: Experience[] = [
   },
   {
     company: "Converse University",
-    location: "Spartanburg, NC",
+    location: "Spartanburg, SC",
     role: "Head Coach, Esports",
     period: "July 2023 - June 2025",
     bullets: [
